@@ -1,0 +1,7 @@
+{
+  "name": "hack-poverty",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
