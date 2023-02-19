@@ -1,16 +1,14 @@
 import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonListHeader,
+  IonButton, IonContent, IonHeader, IonItem,
+  IonLabel, IonList, IonListHeader, IonPage, IonTitle, IonToolbar
 } from "@ionic/react";
+import { useHistory } from "react-router";
+import { useAuth } from "src/auth/store";
 
 export const DashboardPage = () => {
+  const auth = useAuth();
+  const history = useHistory();
+
   return (
     <IonPage>
       <IonHeader>
@@ -29,6 +27,10 @@ export const DashboardPage = () => {
           <IonItem>
             <IonLabel>Dec 15, 2022</IonLabel>
           </IonItem>
+          <IonButton onClick={() => {
+            auth.logout();
+            history.push("/login");
+          }}>Log out</IonButton>
         </IonList>
       </IonContent>
     </IonPage>
