@@ -73,6 +73,7 @@
   "devDependencies": {
     "@capacitor/cli": "4.6.3",
     "@vitejs/plugin-react": "^3.1.0",
+    "react-scripts": "5.0.1",
     "vite": "^4.1.2",
     "vite-plugin-svgr": "^2.4.0",
     "vite-tsconfig-paths": "^4.0.5"

@@ -21,15 +21,18 @@ import "@ionic/react/css/text-alignment.css";
 import "@ionic/react/css/text-transformation.css";
 
 /* Theme variables */
+import "./theme/variables.css";
+import "./global/custom.css";
+
 import { PrivateRoute } from "./auth/PrivateRoute";
 import { AuthPage } from "./pages/AuthPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { LogDataPage } from "./pages/LogDataPage";
-import "./theme/variables.css";
+
 import { FarmersListPage } from "./pages/FarmersListPage";
 import { PublicRoute } from "./auth/PublicRoute";
 
-setupIonicReact();
+setupIonicReact({mode:'ios'});
 
 const App: React.FC = () => (
   <IonApp>
