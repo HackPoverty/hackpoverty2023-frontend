@@ -25,14 +25,10 @@ import { PrivateRoute } from "./auth/PrivateRoute";
 import { PublicRoute } from "./auth/PublicRoute";
 import { AuthPage } from "./pages/AuthPage";
 import { DashboardPage } from "./pages/DashboardPage";
+import { FarmChecklist } from "./pages/farmers/checklist";
+import { FarmerDetailPage } from "./pages/farmers/FarmerDetailPage";
+import { FarmersListPage } from "./pages/farmers/FarmersListPage";
 import { LogDataPage } from "./pages/LogDataPage";
-import { FarmerChecklistPage } from "./pages/technician/FarmerCheckList";
-import { FarmerDetailPage } from "./pages/technician/FarmerDetailPage";
-import { FarmerNote } from "./pages/technician/FarmerNote";
-import { FarmerRecordComplete } from "./pages/technician/FarmerRecordComplete";
-import { FarmerRedFlag } from "./pages/technician/FarmerRedFlag";
-import { FarmersListPage } from "./pages/technician/FarmersListPage";
-import { FarmerVaccinations } from "./pages/technician/FarmerVaccinations";
 import "./theme/variables.css";
 
 setupIonicReact();
@@ -57,19 +53,7 @@ const App: React.FC = () => (
           <FarmerDetailPage />
         </PrivateRoute>
         <PrivateRoute exact path="/farmers/:farmer_id/checklist" role="TECHNICIAN">
-          <FarmerChecklistPage />
-        </PrivateRoute>
-        <PrivateRoute exact path="/farmers/:farmer_id/red_flag" role="TECHNICIAN">
-          <FarmerRedFlag />
-        </PrivateRoute>
-        <PrivateRoute exact path="/farmers/:farmer_id/vaccines" role="TECHNICIAN">
-          <FarmerVaccinations />
-        </PrivateRoute>
-        <PrivateRoute exact path="/farmers/:farmer_id/notes" role="TECHNICIAN">
-          <FarmerNote />
-        </PrivateRoute>
-        <PrivateRoute exact path="/farmers/:farmer_id/complete" role="TECHNICIAN">
-          <FarmerRecordComplete />
+          <FarmChecklist />
         </PrivateRoute>
         <Route exact path="/">
           <Redirect to="/login" />
