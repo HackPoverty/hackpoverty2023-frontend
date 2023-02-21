@@ -1,0 +1,15 @@
+ion-card {
+  border-left: 6px solid;
+}
+
+ion-card.new {
+  border-left-color: var(--ion-color-success);
+}
+
+ion-card.recent {
+  border-left-color: var(--ion-color-warning);
+}
+
+ion-card.old {
+  border-left-color: var(--ion-color-danger);
+}

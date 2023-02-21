@@ -1,6 +1,6 @@
 import { FarmerCard } from "@/components/farmers/FarmerCard";
 import {
-  IonContent, IonItem, IonList, IonPage, IonTitle
+  IonContent, IonPage, IonText
 } from "@ionic/react";
 
 const mockData = [
@@ -9,21 +9,23 @@ const mockData = [
 ]
 
 export const FarmersListPage = () => {
+  const now = new Date();
   return (
     <IonPage>
-      <IonContent>
-        <IonTitle>
-          Hello technician!
-        </IonTitle>
-        <p>You have visited {mockData.length} farms this month</p>
-        <p>Keep it up</p>
-        <IonList>
-          {mockData.map(item => (
-            <IonItem button routerLink={`farmers/${item.id}`}>
-              <FarmerCard name={item.name} lastedVisitedDate={item.lastVisitedDate} />
-            </IonItem>
-          ))}
-        </IonList>
+      <IonContent fullscreen class="ion-padding">
+        <IonText>
+          <h1>Hello technician!</h1>
+          <p>You have visited {mockData.length} farms this month</p>
+          <p>Keep it up</p>
+        </IonText>
+        {mockData.map(farmer => (
+          <FarmerCard
+            id={farmer.id}
+            name={farmer.name} 
+            lastVisitDate={farmer.lastVisitedDate} 
+            now={now} 
+            key={farmer.id} />
+        ))}
       </IonContent>
     </IonPage>
   );

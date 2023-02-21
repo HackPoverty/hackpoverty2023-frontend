@@ -13,7 +13,7 @@ export const RadioOptions: React.FC<Props> = ({ label, options, name }) => {
   return (
     <>
       <h5>{label}</h5>
-      <IonRadioGroup >
+      <IonRadioGroup>
         {options.map(option => (
           <IonItem>
             <IonLabel>{option}</IonLabel>

@@ -32,7 +32,9 @@ import { FarmersListPage } from "./pages/farmers/FarmersListPage";
 import { LogDataPage } from "./pages/LogDataPage";
 import "./theme/variables.css";
 
-setupIonicReact();
+setupIonicReact({
+  mode: "ios"
+});
 
 const App: React.FC = () => (
   <IonApp>
