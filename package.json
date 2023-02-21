@@ -47,7 +47,7 @@
   "scripts": {
     "start": "vite",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "build": "npm run lint && tsc && vite build",
+    "build": "tsc && vite build",
     "test": "vitest watch",
     "test:ci": "vitest run",
     "serve": "vite preview"
