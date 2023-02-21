@@ -26,6 +26,7 @@ import { PublicRoute } from "./auth/PublicRoute";
 import { AuthPage } from "./pages/AuthPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { FarmChecklist } from "./pages/farmers/checklist";
+import { FarmRecordComplete } from "./pages/farmers/checklist/complete";
 import { FarmerDetailPage } from "./pages/farmers/FarmerDetailPage";
 import { FarmersListPage } from "./pages/farmers/FarmersListPage";
 import { LogDataPage } from "./pages/LogDataPage";
@@ -54,6 +55,9 @@ const App: React.FC = () => (
         </PrivateRoute>
         <PrivateRoute exact path="/farmers/:farmer_id/checklist" role="TECHNICIAN">
           <FarmChecklist />
+        </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id/checklist/complete" role="TECHNICIAN">
+          <FarmRecordComplete />
         </PrivateRoute>
         <Route exact path="/">
           <Redirect to="/login" />

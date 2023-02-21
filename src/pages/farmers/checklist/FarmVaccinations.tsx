@@ -1,18 +1,20 @@
-import { RadioOptions } from "@/components/technicians/RadioOptions";
-import { IonContent, IonHeader, IonInput, IonItem, IonLabel, IonList, IonTitle, IonToolbar } from "@ionic/react";
-import { useParams } from "react-router-dom";
+import { RadioOptions } from "@/components/farmers/RadioOptions";
+import { IonCheckbox, IonInput, IonItem, IonLabel, IonList } from "@ionic/react";
+import { useFormContext } from "react-hook-form";
+import { FarmRecord } from ".";
 
 export const FarmVaccinations = () => {
-  const params = useParams<{ farmer_id: string }>();
+  const {register} = useFormContext<FarmRecord>()
   return <>
-      <IonList>
-        <IonItem>
-          <RadioOptions label="Were vaccine admisterred" options={["yes", "no"]} />
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Type of vaccine admisterred</IonLabel>
-          <IonInput />
-        </IonItem>
-      </IonList>
+    <IonList>
+      <IonItem>
+        <IonLabel>Were vaccines admisterred?</IonLabel>
+        <IonCheckbox {...register("vaccination.admisterred")} />
+      </IonItem>
+      <IonItem>
+        <IonLabel position="floating">Type of vaccine admisterred</IonLabel>
+        <IonInput {...register("vaccination.type")} />
+      </IonItem>
+    </IonList>
   </>
 };

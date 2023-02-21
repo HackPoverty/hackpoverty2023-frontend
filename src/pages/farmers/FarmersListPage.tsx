@@ -1,4 +1,4 @@
-import { FarmerCard } from "@/components/technicians/FarmerCard";
+import { FarmerCard } from "@/components/farmers/FarmerCard";
 import {
   IonContent, IonItem, IonList, IonPage, IonTitle
 } from "@ionic/react";
