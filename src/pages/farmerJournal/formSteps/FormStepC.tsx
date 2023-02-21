@@ -12,8 +12,12 @@ import {
   IonLabel,
   IonList,
 } from "@ionic/react";
+import { useFormContext } from "react-hook-form";
+import { FarmerJournalFormInputs } from "../";
 
 export const FormStepC = () => {
+  const { register } = useFormContext<FarmerJournalFormInputs>();
+
   return (
     <IonPage>
       <IonHeader>
@@ -28,11 +32,14 @@ export const FormStepC = () => {
         <IonList>
           <IonItem>
             <IonLabel position="stacked">Total Feed Given</IonLabel>
-            <IonInput type="number" />
+            <IonInput type="number" {...register("totalFeedAmount")} />
           </IonItem>
           <IonItem>
             <IonLabel position="stacked">Industry Standard</IonLabel>
-            <IonInput type="number" />
+            <IonInput
+              type="number"
+              {...register("totalFeedAmountIndustryStandard")}
+            />
           </IonItem>
         </IonList>
         <IonButton routerLink="step-2">Back</IonButton>
