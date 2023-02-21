@@ -1,5 +1,6 @@
 import { IonButton, IonContent, IonHeader, IonItem, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 import { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { FarmRecordComplete } from "./FarmComplete";
 import { FarmNote } from "./FarmNote";
 import { FarmQuality } from "./FarmQuality";
@@ -16,6 +17,7 @@ const steps = [
 
 export const FarmChecklist = () => {
   const [step, setStep] = useState(0);
+  const methods = useForm<FarmRecord>();
 
 
   return (
@@ -26,9 +28,11 @@ export const FarmChecklist = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <form>
-          {steps[step].element}
-        </form>
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(console.log)}>
+            {steps[step].element}
+          </form>
+        </FormProvider>
 
         {/* Navigation */}
         {step < steps.length - 1 ? <IonItem>
@@ -38,4 +42,26 @@ export const FarmChecklist = () => {
       </IonContent>
     </IonPage>
   )
+}
+
+type Quality = "good" | "ok" | "bad"
+
+export type FarmRecord = {
+  quality: {
+    light: Quality,
+    feed: Quality,
+    water: Quality,
+    beeding: Quality,
+    note: string
+  },
+  redFlag: {
+    signOfDisease: "present" | "absent" | "not sure",
+    name: string,
+    indication: string
+  },
+  vaccination: {
+    admisterred: boolean,
+    type?: string
+  },
+  note: string
 }

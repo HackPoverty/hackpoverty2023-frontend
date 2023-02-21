@@ -1,9 +1,12 @@
 import { RadioOptions } from "@/components/technicians/RadioOptions";
 import { IonItem, IonLabel, IonList, IonTextarea } from "@ionic/react";
+import { useFormContext } from "react-hook-form";
 import { useParams } from "react-router";
+import { FarmRecord } from ".";
 
 export const FarmQuality = () => {
   const params = useParams<{ farmer_id: string }>();
+  const {register} = useFormContext<FarmRecord>()
   return <>
     <IonList>
       <IonItem>
@@ -23,7 +26,7 @@ export const FarmQuality = () => {
       </IonItem>
       <IonItem>
         <IonLabel position="floating">Note, comments, or concerns</IonLabel>
-        <IonTextarea />
+        <IonTextarea {...register("quality.note")} />
       </IonItem>
     </IonList>
   </>
