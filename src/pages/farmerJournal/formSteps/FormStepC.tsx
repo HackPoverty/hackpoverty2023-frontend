@@ -25,7 +25,7 @@ export const FormStepC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Step 3</IonTitle>
+          <IonTitle>Feed (3/4)</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="page">
