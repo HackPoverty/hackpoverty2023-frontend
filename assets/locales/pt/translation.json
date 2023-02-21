@@ -1,3 +1,8 @@
 {
-  "welcome message": "Olá, bem vindo ao site"
+  "welcome message": "Olá, bem vindo ao site",
+  "farmer_login": "Fazer o Login como Agriculture",
+  "technician_login": "Fazer o Login como technico",
+  "farmers": "Agricultores",
+  "farmer": "Agricultore",
+  "pick_farmer": "Eschole Agricultore"
 }

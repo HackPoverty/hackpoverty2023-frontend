@@ -1,3 +1,9 @@
 {
-  "welcome message": "Hello, welcome to the site!"
+  "welcome message": "Hello, welcome to the site!",
+  "farmer_login": "Log in as Farmer",
+  "technician_login": "Log in as Technician",
+  "farmers": "Farmers",
+  "farmer": "Farmer",
+  "pick_farmer": "Pick Farmer"
+
 }

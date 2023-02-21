@@ -9,25 +9,26 @@ import {
   IonToolbar,
   IonTitle,
 } from "@ionic/react";
+import { t } from "i18next";
 
 export const FarmersListPage = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Farmers</IonTitle>
+          <IonTitle>{t("farmers")}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonList lines="full">
           <IonListHeader>
-            <IonLabel>Pick Farmer</IonLabel>
+            <IonLabel>{t("pick_farmer")}</IonLabel>
           </IonListHeader>
           <IonItem>
-            <IonLabel>Farmer A</IonLabel>
+            <IonLabel>{t("farmer")} A</IonLabel>
           </IonItem>
           <IonItem>
-            <IonLabel>Farmer B</IonLabel>
+            <IonLabel>{t("farmer")} B</IonLabel>
           </IonItem>
         </IonList>
       </IonContent>
