@@ -10,6 +10,7 @@ import {
   IonInput,
   IonCheckbox,
 } from "@ionic/react";
+import { t } from "i18next";
 
 export const LogDataPage = () => {
   return (
@@ -22,7 +23,7 @@ export const LogDataPage = () => {
       <IonContent>
         <IonList>
           <IonItem>
-            <IonLabel>Chicken Name</IonLabel>
+            <IonLabel>{t("chicken_name")}</IonLabel>
             <IonInput
               placeholder="Matthew"
               onIonChange={(e) => console.log(e.target.value)}
@@ -33,7 +34,7 @@ export const LogDataPage = () => {
               slot="start"
               onIonChange={(e) => console.log(e.target.checked)}
             />
-            <IonLabel>Request technician</IonLabel>
+            <IonLabel>{t("request_technician")}</IonLabel>
           </IonItem>
         </IonList>
       </IonContent>

@@ -4,6 +4,8 @@
   "technician_login": "Log in as Technician",
   "farmers": "Farmers",
   "farmer": "Farmer",
-  "pick_farmer": "Pick Farmer"
+  "pick_farmer": "Pick Farmer",
+  "request_technician": "Request a Technician",
+  "chicken_name": "Chicken Name"
 
 }
