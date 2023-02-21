@@ -22,12 +22,18 @@ import "@ionic/react/css/text-transformation.css";
 
 /* Theme variables */
 import { PrivateRoute } from "./auth/PrivateRoute";
+import { PublicRoute } from "./auth/PublicRoute";
 import { AuthPage } from "./pages/AuthPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { LogDataPage } from "./pages/LogDataPage";
+import { FarmerChecklistPage } from "./pages/technician/FarmerCheckList";
+import { FarmerDetailPage } from "./pages/technician/FarmerDetailPage";
+import { FarmerNote } from "./pages/technician/FarmerNote";
+import { FarmerRecordComplete } from "./pages/technician/FarmerRecordComplete";
+import { FarmerRedFlag } from "./pages/technician/FarmerRedFlag";
+import { FarmersListPage } from "./pages/technician/FarmersListPage";
+import { FarmerVaccinations } from "./pages/technician/FarmerVaccinations";
 import "./theme/variables.css";
-import { FarmersListPage } from "./pages/FarmersListPage";
-import { PublicRoute } from "./auth/PublicRoute";
 
 setupIonicReact();
 
@@ -42,11 +48,32 @@ const App: React.FC = () => (
           <DashboardPage />
         </PrivateRoute>
         <PrivateRoute exact path="/log-data" role="FARMER">
-          <DashboardPage />
+          <LogDataPage />
         </PrivateRoute>
         <PrivateRoute exact path="/farmers" role="TECHNICIAN">
           <FarmersListPage />
         </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id" role="TECHNICIAN">
+          <FarmerDetailPage />
+        </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id/checklist" role="TECHNICIAN">
+          <FarmerChecklistPage />
+        </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id/red_flag" role="TECHNICIAN">
+          <FarmerRedFlag />
+        </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id/vaccines" role="TECHNICIAN">
+          <FarmerVaccinations />
+        </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id/notes" role="TECHNICIAN">
+          <FarmerNote />
+        </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id/complete" role="TECHNICIAN">
+          <FarmerRecordComplete />
+        </PrivateRoute>
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
