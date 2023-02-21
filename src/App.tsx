@@ -1,6 +1,4 @@
-import {
-  IonApp, IonRouterOutlet, setupIonicReact
-} from "@ionic/react";
+import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route } from "react-router-dom";
 
@@ -28,6 +26,7 @@ import { LogDataPage } from "./pages/LogDataPage";
 import "./theme/variables.css";
 import { FarmersListPage } from "./pages/FarmersListPage";
 import { PublicRoute } from "./auth/PublicRoute";
+import { FarmerJournalPage } from "./pages/farmerJournal";
 
 setupIonicReact();
 
@@ -47,6 +46,7 @@ const App: React.FC = () => (
         <PrivateRoute exact path="/farmers" role="TECHNICIAN">
           <FarmersListPage />
         </PrivateRoute>
+        <FarmerJournalPage />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
