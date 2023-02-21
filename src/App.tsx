@@ -47,6 +47,9 @@ const App: React.FC = () => (
         <PrivateRoute exact path="/farmers" role="TECHNICIAN">
           <FarmersListPage />
         </PrivateRoute>
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
