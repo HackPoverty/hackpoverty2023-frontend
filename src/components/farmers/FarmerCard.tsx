@@ -23,7 +23,7 @@ export const FarmerCard: React.FC<Props> = ({ id, name, lastVisitDate, now }) =>
   const days = Math.ceil(diff / (1000 * 3600 * 24));
 
   return <IonCard
-    className={`ion-no-margin ion-margin-vertical ${getStatus(days)}`}
+    className={`ion-no-margin ion-margin-vertical farmer-card ${getStatus(days)}`}
     button
     routerLink={`/farmers/${id}`}>
     <IonRippleEffect />
