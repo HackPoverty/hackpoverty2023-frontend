@@ -1,20 +1,22 @@
-import "./ExploreContainer.css";
-import {useTranslation} from "react-i18next";
+import "./ExploreContainer.css"
+import { useTranslation } from "react-i18next"
 
 interface ContainerProps {
-  name: string;
+  name: string
 }
 
-const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
-  const {t} = useTranslation();
+const ExploreContainer: React.FC<ContainerProps> = ({
+  name,
+}: {
+  name: string
+}) => {
+  const { t } = useTranslation()
   return (
     <div className="container">
       <strong>{name}</strong>
-      <p>
-        {t("welcome message")}
-      </p>
+      <p>{t("welcome message")}</p>
     </div>
-  );
-};
+  )
+}
 
-export default ExploreContainer;
+export default ExploreContainer
