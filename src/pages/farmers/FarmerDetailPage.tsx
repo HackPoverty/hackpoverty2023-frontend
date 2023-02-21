@@ -6,7 +6,6 @@ import {
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useParams } from "react-router";
-import "./FarmerDetailPage.css";
 
 dayjs.extend(relativeTime)
 
@@ -24,7 +23,10 @@ export const FarmerDetailPage = () => {
       <IonContent fullscreen class="ion-padding">
         <h1>{mockData.name}</h1>
         <p>Last visit was {dayjs(mockData.visitDates[0]).fromNow(true)} ago</p>
-        <IonButton routerLink={`/farmers/${params.farmer_id}/checklist`} className="ion-text-uppercase record-btn">
+        <IonButton 
+          routerLink={`/farmers/${params.farmer_id}/checklist`} 
+          className="ion-text-uppercase record-btn"
+          expand="block">
           Record Entry
         </IonButton>
         <h4>Address</h4>

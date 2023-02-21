@@ -1,10 +1,12 @@
-import { IonButton, IonContent, IonHeader, IonItem, IonPage, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonCol, IonContent, IonHeader, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react";
 import { useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { useHistory, useParams } from "react-router";
 import { FarmNote } from "./FarmNote";
 import { FarmQuality } from "./FarmQuality";
 import { FarmRedFlag } from "./FarmRedFlag";
 import { FarmVaccinations } from "./FarmVaccinations";
+import "./index.css";
 
 const steps = [
   { title: "Quality", element: <FarmQuality /> },
@@ -16,6 +18,13 @@ const steps = [
 export const FarmChecklist = () => {
   const [step, setStep] = useState(0);
   const methods = useForm<FarmRecord>();
+  const history = useHistory();
+  const params = useParams<{ farmer_id: string }>();
+
+  const onSubmit: SubmitHandler<FarmRecord> = (data) => {
+    console.log(data);
+    history.push(`/farmers/${params.farmer_id}/checklist/complete`)
+  }
 
   return (
     <IonPage>
@@ -24,16 +33,40 @@ export const FarmChecklist = () => {
           <IonTitle>{steps[step].title}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent className="ion-padding">
         <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(console.log)}>
-            {steps[step].element}
-            <IonItem>
-              <IonButton disabled={step == 0} onClick={() => setStep(step => step - 1)}>Back</IonButton>
-              {step < steps.length - 1 ?
-                <IonButton onClick={() => setStep(step => step + 1)}>Next</IonButton>
-                : <IonButton type="submit" >Submit</IonButton>}
-            </IonItem>
+          <form onSubmit={methods.handleSubmit(onSubmit)} className="checklist-form">
+            <div className="checklist-content">
+              {steps[step].element}
+            </div>
+            <div className="checklist-navigation">
+              <IonRow>
+                <IonCol>
+                  <IonButton
+                    onClick={() => {
+                      if (step === 0) history.goBack();
+                      else setStep(step => step - 1);
+                    }}
+                    className="ion-text-uppercase"
+                    fill="clear"
+                    expand="block"
+                  >Back</IonButton>
+                </IonCol>
+                <IonCol>
+                  {step < steps.length - 1 ?
+                    <IonButton
+                      onClick={() => setStep(step => step + 1)}
+                      className="ion-text-uppercase"
+                      expand="block"
+                    >Next</IonButton>
+                    : <IonButton
+                      type="submit"
+                      className="ion-text-uppercase"
+                      expand="block"
+                    >Submit</IonButton>}
+                </IonCol>
+              </IonRow>
+            </div>
           </form>
         </FormProvider>
       </IonContent>
