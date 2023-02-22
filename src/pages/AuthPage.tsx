@@ -2,7 +2,7 @@ import { IonButton, IonContent, IonInput, IonItem, IonLabel, IonLoading, IonNote
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
-import { LoginData, useAuth } from "src/auth/store";
+import { LoginData, useAuth } from "src/auth";
 import "./AuthPage.css";
 
 export const AuthPage = () => {

@@ -27,7 +27,7 @@ const baseApi = axios.create({
 })
 
 
-type JWTDecoded = {
+type JWTPayLoad = {
   iat: number,
   drupal: {
     uid: number,
@@ -37,8 +37,27 @@ type JWTDecoded = {
 
 type Respose = { token: string }
 
+const decodeToken = (token: string) => {
+  const { iat, drupal } = jwt_decode<JWTPayLoad>(token);
+  return {
+    iat,
+    user: {
+      uid: drupal.uid,
+      role: drupal.role.includes("ovo_technician") ? "TECHNICIAN" : "FARMER"
+    } as User
+  }
+}
+
+const TOKEN_STORAGE_KEY = "ovoflow_token" as const
+
+const getUserFromLocalStorage = () => {
+  const token = localStorage.getItem(TOKEN_STORAGE_KEY)
+  if (!token) return { iat: undefined, user: undefined }
+  return decodeToken(token)
+}
+
 export const useAuth = create<Store>(set => ({
-  role: undefined,
+  ...getUserFromLocalStorage(),
   login: async (data: LoginData) => {
     const response = await baseApi.get<Respose>('jwt/token', {
       params: {
@@ -46,23 +65,21 @@ export const useAuth = create<Store>(set => ({
       },
       auth: data
     });
-    const { iat, drupal } = jwt_decode<JWTDecoded>(response.data.token);
-    const role: Role = drupal.role.includes("ovo_technician") ? "TECHNICIAN" : "FARMER";
+    localStorage.setItem(TOKEN_STORAGE_KEY, response.data.token)
+    const decoded = decodeToken(response.data.token)
     set(state => ({
       ...state,
-      iat,
-      user: {
-        role,
-        uid: drupal.uid
-      }
+      ...decoded
     }))
-    return role;
+    return decoded.user.role;
   },
   logout() {
+    localStorage.removeItem(TOKEN_STORAGE_KEY)
     set(state => ({
       ...state,
-      user: undefined,
-      iat: undefined
-    }))
+      iat: undefined,
+      user: undefined
+    })
+    )
   }
 }));

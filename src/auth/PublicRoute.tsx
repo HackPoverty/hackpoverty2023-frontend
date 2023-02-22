@@ -1,5 +1,5 @@
 import { Redirect, Route, RouteProps } from 'react-router-dom';
-import { useAuth } from './store';
+import { useAuth } from '.';
 interface PrivateRouteProps extends RouteProps {
   children: React.ReactNode,
 
