@@ -1,15 +1,19 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import "./i18n";
 import reportWebVitals from "./reportWebVitals";
-import "./i18n"
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const container = document.getElementById("root");
+const queryClient = new QueryClient();
 const root = createRoot(container!);
 root.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

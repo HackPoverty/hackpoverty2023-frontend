@@ -10,7 +10,7 @@ export const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, role, ...r
 
   return (
     <Route {...rest} >
-      {auth.role === role ? (
+      {auth.user?.role === role ? (
         children
       ) : (
         <Redirect to='/login' />

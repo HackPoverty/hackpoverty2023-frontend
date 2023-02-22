@@ -9,9 +9,9 @@ export const PublicRoute: React.FC<PrivateRouteProps> = ({ children, ...rest }) 
 
   return (
     <Route {...rest} >
-      {auth.role === undefined ? (
+      {auth.user?.role === undefined ? (
         children
-      ) : auth.role === "FARMER" ? (
+      ) : auth.user?.role === "FARMER" ? (
         <Redirect to="/dashboard" />
       ) : <Redirect to="/farmers" />}
     </Route>
