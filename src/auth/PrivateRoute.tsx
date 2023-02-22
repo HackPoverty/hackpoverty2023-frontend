@@ -1,20 +1,19 @@
-import { Redirect, Route, RouteProps } from 'react-router-dom';
-import { Role, useAuth } from './store';
+import { Redirect, Route, RouteProps } from "react-router-dom"
+import { Role, useAuth } from "./store"
 interface PrivateRouteProps extends RouteProps {
-  children: React.ReactNode,
-  role: Role
-
+  children: React.ReactNode
+  appRole: Role
 }
-export const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, role, ...rest }) => {
-  const auth = useAuth();
+export const PrivateRoute = ({
+  children,
+  appRole,
+  ...rest
+}: PrivateRouteProps) => {
+  const auth = useAuth()
 
   return (
-    <Route {...rest} >
-      {auth.role === role ? (
-        children
-      ) : (
-        <Redirect to='/login' />
-      )}
+    <Route {...rest}>
+      {auth.role === appRole ? children : <Redirect to="/login" />}
     </Route>
-  );
-};
+  )
+}
