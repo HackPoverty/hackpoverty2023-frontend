@@ -1,5 +1,5 @@
 import { RadioOptions } from "@/components/farmers/RadioOptions";
-import { IonInput, IonItem, IonLabel, IonTextarea } from "@ionic/react";
+import { IonInput, IonLabel } from "@ionic/react";
 import { useFormContext } from "react-hook-form";
 import { FarmRecord, QualityTypes } from ".";
 

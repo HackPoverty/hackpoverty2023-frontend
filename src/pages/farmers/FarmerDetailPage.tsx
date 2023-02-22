@@ -1,7 +1,7 @@
 import { PastVisitRecord } from "@/components/farmers/PastVisitRecord";
 import {
   IonButton,
-  IonContent, IonPage
+  IonContent, IonPage,
 } from "@ionic/react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -12,8 +12,8 @@ dayjs.extend(relativeTime)
 const mockData = {
   name: "John Doe", visitDates: [
     new Date("2023-02-13"),
-    new Date("2023-02-07")
-  ]
+    new Date("2023-02-07"),
+  ],
 }
 
 export const FarmerDetailPage = () => {
@@ -23,8 +23,8 @@ export const FarmerDetailPage = () => {
       <IonContent fullscreen class="ion-padding">
         <h1>{mockData.name}</h1>
         <p>Last visit was {dayjs(mockData.visitDates[0]).fromNow(true)} ago</p>
-        <IonButton 
-          routerLink={`/farmers/${params.farmer_id}/checklist`} 
+        <IonButton
+          routerLink={`/farmers/${params.farmer_id}/checklist`}
           className="ion-text-uppercase record-btn"
           expand="block">
           Record Entry

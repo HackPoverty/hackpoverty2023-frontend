@@ -1,5 +1,5 @@
 import { DiseaseSigns, FarmRecord, QualityTypes } from "@/pages/farmers/checklist";
-import { IonItem, IonLabel } from "@ionic/react";
+import { IonLabel } from "@ionic/react";
 import { useFormContext, type UseFormRegister } from "react-hook-form";
 import "./RadioOptions.css";
 
@@ -9,7 +9,7 @@ interface Props {
   name: Parameters<UseFormRegister<FarmRecord>>[0]
 };
 
-export const RadioOptions: React.FC<Props> = ({ label, options, name }) => {
+export const RadioOptions = ({ label, options, name }: Props) => {
   const { register } = useFormContext<FarmRecord>();
   return (
     <div>

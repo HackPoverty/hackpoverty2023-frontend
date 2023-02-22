@@ -18,7 +18,7 @@ const getStatus = (days: number) => {
   return "old";
 }
 
-export const FarmerCard: React.FC<Props> = ({ id, name, lastVisitDate, now }) => {
+export const FarmerCard = ({ id, name, lastVisitDate, now }: Props) => {
   const diff = now.getTime() - lastVisitDate.getTime();
   const days = Math.ceil(diff / (1000 * 3600 * 24));
 

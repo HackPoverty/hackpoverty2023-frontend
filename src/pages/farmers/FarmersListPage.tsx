@@ -1,7 +1,5 @@
 import { FarmerCard } from "@/components/farmers/FarmerCard";
-import {
-  IonContent, IonPage, IonText
-} from "@ionic/react";
+import { IonContent, IonPage, IonText } from "@ionic/react";
 
 const mockData = [
   { id: 1, name: "John Doe", lastVisitedDate: new Date("2023-02-13") },
@@ -21,9 +19,9 @@ export const FarmersListPage = () => {
         {mockData.map(farmer => (
           <FarmerCard
             id={farmer.id}
-            name={farmer.name} 
-            lastVisitDate={farmer.lastVisitedDate} 
-            now={now} 
+            name={farmer.name}
+            lastVisitDate={farmer.lastVisitedDate}
+            now={now}
             key={farmer.id} />
         ))}
       </IonContent>
