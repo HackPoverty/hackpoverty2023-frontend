@@ -1,25 +1,25 @@
-import { create } from "zustand";
+import { create } from "zustand"
 
-export type Role = "FARMER" | "TECHNICIAN";
+export type Role = "FARMER" | "TECHNICIAN"
 
 type Store = {
-  role? : Role;
-  login: (role: Role) => void;
-  logout: () => void;
+  role?: Role
+  login: (role: Role) => void
+  logout: () => void
 }
 
-export const useAuth = create<Store>(set => ({
+export const useAuth = create<Store>((set) => ({
   role: undefined,
   login(role) {
-    set(state => ({
+    set((state) => ({
       ...state,
-      role
+      role,
     }))
   },
   logout() {
-    set(state => ({
+    set((state) => ({
       ...state,
-      role: undefined
+      role: undefined,
     }))
-  }
-}));
+  },
+}))

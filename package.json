@@ -47,7 +47,10 @@
   },
   "scripts": {
     "start": "vite",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "build": "tsc && vite build",
+    "test": "vitest watch",
+    "test:ci": "vitest run",
     "serve": "vite preview"
   },
   "eslintConfig": {
@@ -73,10 +76,21 @@
   },
   "devDependencies": {
     "@capacitor/cli": "4.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "@vitejs/plugin-react": "^3.1.0",
+    "c8": "^7.13.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "jsdom": "^21.1.0",
+    "prettier": "^2.8.4",
     "vite": "^4.1.2",
     "vite-plugin-svgr": "^2.4.0",
-    "vite-tsconfig-paths": "^4.0.5"
+    "vite-tsconfig-paths": "^4.0.5",
+    "vitest": "^0.28.5"
   },
   "description": "An Ionic project"
 }
