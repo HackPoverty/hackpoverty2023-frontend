@@ -1,23 +1,34 @@
-import { IonButton, IonContent, IonPage } from "@ionic/react";
+import { IonButton, IonContent, IonInput, IonItem, IonLabel, IonPage } from "@ionic/react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
-import { useAuth } from "src/auth/store";
+import { Role, useAuth } from "src/auth/store";
+import "./AuthPage.css";
+
+type LoginData = {
+  phoneNumber: string;
+  password: string;
+}
 
 export const AuthPage = () => {
   const auth = useAuth();
   const history = useHistory();
+  const { register, handleSubmit } = useForm<LoginData>({});
+
   return (
     <IonPage>
       <IonContent>
-        <IonButton onClick={() => {
-          auth.login("FARMER");
-          history.push("/dashboard");
-        }}>Log in as farmer</IonButton>
-
-        <IonButton onClick={() => {
-          auth.login("TECHNICIAN");
-          history.push("/farmers");
-        }}>Log in as technician</IonButton>
+        <form className="login-form ion-padding" onSubmit={handleSubmit(console.log)}>
+          <IonItem fill="outline">
+            <IonLabel position="floating">Phone number</IonLabel>
+            <IonInput {...register("phoneNumber")} required></IonInput>
+          </IonItem>
+          <IonItem fill="outline">
+            <IonLabel position="floating">Password</IonLabel>
+            <IonInput type="password" {...register("password")} required></IonInput>
+          </IonItem>
+          <IonButton expand="block" type="submit">Login</IonButton>
+        </form>
       </IonContent>
-    </IonPage>
+    </IonPage >
   );
 };

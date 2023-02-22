@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
-export type Role = "FARMER" | "TECHNICIAN";
+export const Roles = ["FARMER", "TECHNICIAN"] as const;
+export type Role = typeof Roles[number];
 
 type Store = {
   role? : Role;
