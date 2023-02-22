@@ -12,12 +12,7 @@ import {
   IonLabel,
   IonList,
 } from "@ionic/react";
-import {
-  useForm,
-  useFormContext,
-  UseFormGetValues,
-  UseFormRegister,
-} from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { FarmerJournalFormInputs } from "../";
 
 export const FormStepB = () => {

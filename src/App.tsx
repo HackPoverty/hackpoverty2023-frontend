@@ -21,9 +21,13 @@ import { PrivateRoute } from "./auth/PrivateRoute"
 import { AuthPage } from "./pages/AuthPage"
 import { DashboardPage } from "./pages/DashboardPage"
 import "./theme/variables.css"
-import { FarmersListPage } from "./pages/FarmersListPage"
 import { PublicRoute } from "./auth/PublicRoute"
-import { FarmerJournalPage } from "./pages/farmerJournal";
+import { FarmerJournalPage } from "./pages/farmerJournal"
+import { FarmerDetailPage } from "./pages/farmers/FarmerDetailPage"
+import { FarmChecklist } from "./pages/farmers/checklist"
+import { FarmRecordComplete } from "./pages/farmers/checklist/complete"
+import { Redirect, Route } from "react-router-dom"
+import { FarmersListPage } from "./pages/farmers/FarmersListPage"
 
 setupIonicReact()
 
@@ -43,6 +47,18 @@ const App: React.FC = () => (
         <PrivateRoute exact path="/farmers" appRole="TECHNICIAN">
           <FarmersListPage />
         </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id" appRole="TECHNICIAN">
+          <FarmerDetailPage />
+        </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id/checklist" appRole="TECHNICIAN">
+          <FarmChecklist />
+        </PrivateRoute>
+        <PrivateRoute exact path="/farmers/:farmer_id/checklist/complete" appRole="TECHNICIAN">
+          <FarmRecordComplete />
+        </PrivateRoute>
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
         <FarmerJournalPage />
       </IonRouterOutlet>
     </IonReactRouter>
