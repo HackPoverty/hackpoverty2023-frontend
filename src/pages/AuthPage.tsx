@@ -8,14 +8,14 @@ import "./AuthPage.css";
 export const AuthPage = () => {
   const auth = useAuth();
   const history = useHistory();
-  const { register, handleSubmit, formState } = useForm<LoginData>({});
+  const { register, handleSubmit } = useForm<LoginData>({});
   const { mutate, isLoading, error } = useMutation(auth.login);
   const onSubmit: SubmitHandler<LoginData> = (data) => {
     mutate(data, {
       onSuccess(result) {
         if (result === "FARMER") history.replace("/dashboard")
         else history.replace("/farmers")
-      }
+      },
     })
   }
 

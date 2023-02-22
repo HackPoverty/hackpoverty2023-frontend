@@ -43,8 +43,8 @@ const decodeToken = (token: string) => {
     iat,
     user: {
       uid: drupal.uid,
-      role: drupal.role.includes("ovo_technician") ? "TECHNICIAN" : "FARMER"
-    } as User
+      role: drupal.role.includes("ovo_technician") ? "TECHNICIAN" : "FARMER",
+    } as User,
   }
 }
 
@@ -60,16 +60,14 @@ export const useAuth = create<Store>(set => ({
   ...getUserFromLocalStorage(),
   login: async (data: LoginData) => {
     const response = await baseApi.get<Respose>('jwt/token', {
-      params: {
-        "_format": "json"
-      },
-      auth: data
+      params: { "_format": "json" },
+      auth: data,
     });
     localStorage.setItem(TOKEN_STORAGE_KEY, response.data.token)
     const decoded = decodeToken(response.data.token)
     set(state => ({
       ...state,
-      ...decoded
+      ...decoded,
     }))
     return decoded.user.role;
   },
@@ -78,8 +76,8 @@ export const useAuth = create<Store>(set => ({
     set(state => ({
       ...state,
       iat: undefined,
-      user: undefined
+      user: undefined,
     })
     )
-  }
+  },
 }));
