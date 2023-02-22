@@ -33,7 +33,7 @@ import { LogDataPage } from "./pages/LogDataPage";
 import "./theme/variables.css";
 
 setupIonicReact({
-  mode: "ios"
+  mode: "md"
 });
 
 const App: React.FC = () => (
