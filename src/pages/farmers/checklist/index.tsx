@@ -1,5 +1,5 @@
 import { IonButton, IonCol, IonContent, IonHeader, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router";
 import { FarmNote } from "./FarmNote";
@@ -21,9 +21,17 @@ export const FarmChecklist = () => {
   const history = useHistory();
   const params = useParams<{ farmer_id: string }>();
 
+  console.log(step);
+
+  // Reset everything before mounting
+  useEffect(() => {
+    setStep(0);
+    methods.reset();
+  }, []);
+
   const onSubmit: SubmitHandler<FarmRecord> = (data) => {
     console.log(data);
-    history.push(`/farmers/${params.farmer_id}/checklist/complete`)
+    history.replace(`/farmers/${params.farmer_id}/checklist/complete`);
   }
 
   return (

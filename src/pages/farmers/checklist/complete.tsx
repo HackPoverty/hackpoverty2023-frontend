@@ -1,9 +1,10 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import "./complete.css";
 
 export const FarmRecordComplete = () => {
   const history = useHistory();
+  const params = useParams<{farmer_id: string}>();
   return <IonPage>
     <IonHeader>
       <IonToolbar>
@@ -17,7 +18,7 @@ export const FarmRecordComplete = () => {
         </div>
         <div>
           <IonButton expand="block" fill="clear" class="ion-text-uppercase">Contact admin or farmer</IonButton>
-          <IonButton expand="block" class="ion-text-uppercase" onClick={() => history.go(-2)}>Done</IonButton>
+          <IonButton expand="block" class="ion-text-uppercase" onClick={() => history.replace(`/farmers/${params.farmer_id}`)}>Done</IonButton>
         </div>
       </div>
     </IonContent>
