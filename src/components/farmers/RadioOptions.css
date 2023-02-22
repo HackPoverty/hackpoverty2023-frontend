@@ -1,0 +1,20 @@
+.options-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 1rem 0;
+  justify-content: space-around;
+}
+
+.options-row input[type="radio"] {
+  display: none;
+}
+
+.options-row label {
+  opacity: 50%;
+}
+
+.options-row input[type="radio"]:checked ~ label {
+  opacity: 100%;
+  font-weight: bold;
+}

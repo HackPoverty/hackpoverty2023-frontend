@@ -18,6 +18,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
+    "dayjs": "^1.11.7",
     "history": "^4.9.0",
     "i18next": "^22.4.10",
     "i18next-browser-languagedetector": "^7.0.1",
@@ -25,6 +26,7 @@
     "ionicons": "^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.1",
     "react-i18next": "^12.1.5",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -46,7 +48,10 @@
   },
   "scripts": {
     "start": "vite",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "build": "tsc && vite build",
+    "test": "vitest watch",
+    "test:ci": "vitest run",
     "serve": "vite preview"
   },
   "eslintConfig": {
@@ -72,12 +77,23 @@
   },
   "devDependencies": {
     "@capacitor/cli": "4.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "@vitejs/plugin-react": "^3.1.0",
+    "c8": "^7.13.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "jsdom": "^21.1.0",
+    "prettier": "^2.8.4",
     "vite": "^4.1.2",
     "vite-plugin-pwa": "^0.14.4",
     "vite-plugin-svgr": "^2.4.0",
     "vite-tsconfig-paths": "^4.0.5",
-    "workbox-window": "^6.5.4"
+    "workbox-window": "^6.5.4",
+    "vitest": "^0.28.5"
   },
   "description": "An Ionic project"
 }
