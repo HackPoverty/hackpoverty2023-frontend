@@ -17,13 +17,13 @@ import "@ionic/react/css/padding.css"
 import "@ionic/react/css/text-alignment.css"
 import "@ionic/react/css/text-transformation.css"
 
-/* Theme variables */
 import { PrivateRoute } from "./auth/PrivateRoute"
 import { AuthPage } from "./pages/AuthPage"
 import { DashboardPage } from "./pages/DashboardPage"
 import "./theme/variables.css"
 import { FarmersListPage } from "./pages/FarmersListPage"
 import { PublicRoute } from "./auth/PublicRoute"
+import { FarmerJournalPage } from "./pages/farmerJournal";
 
 setupIonicReact()
 
@@ -43,6 +43,7 @@ const App: React.FC = () => (
         <PrivateRoute exact path="/farmers" appRole="TECHNICIAN">
           <FarmersListPage />
         </PrivateRoute>
+        <FarmerJournalPage />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
