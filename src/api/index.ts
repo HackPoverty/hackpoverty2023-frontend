@@ -19,7 +19,8 @@ jsonApi.interceptors.request.use(config => {
 })
 
 // This one smells
-function jsonDeserialize<Type>(data: never) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function jsonDeserialize<Type>(data: any) {
   return deserialize<Type>(data, { changeCase: CaseType.camelCase }) as Type
 }
 
