@@ -18,7 +18,7 @@ export const FarmersListPage = () => {
   return (
     <>
 
-    <TechnicianMenu />
+    <TechnicianMenu contentId={"farmer-list-page"} />
 
     <IonPage id="farmer-list-page">
       <IonHeader>

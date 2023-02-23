@@ -1,11 +1,17 @@
 import { IonHeader, IonToolbar, IonMenu, IonTitle, IonContent } from '@ionic/react';
 import React from 'react';
 import { useTranslation } from "react-i18next"
+interface ContainerProps {
+  contentId: string;
+}
 
-const FarmerMenu: React.FC = () => {
-  
+const FarmerMenu: React.FC<ContainerProps> = ({
+  contentId,
+}: {
+  contentId: string
+}) => {
   return (
-    <IonMenu contentId="dashboard-page">
+    <IonMenu contentId={contentId}>
         <IonHeader>
           <IonToolbar>
             <IonTitle>Farmer Menu</IonTitle>

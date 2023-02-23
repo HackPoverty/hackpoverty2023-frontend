@@ -22,7 +22,7 @@ export const DashboardPage = () => {
 
   return (
     <>
-    <FarmerMenu />
+    <FarmerMenu contentId={"dashboard-page"} />
 
     <IonPage id="dashboard-page">
       <IonHeader>
