@@ -1,11 +1,14 @@
+import FarmerMenu from "@/components/FarmerMenu"
 import {
   IonButton,
+  IonButtons,
   IonContent,
   IonHeader,
   IonItem,
   IonLabel,
   IonList,
   IonListHeader,
+  IonMenuButton,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -18,10 +21,23 @@ export const DashboardPage = () => {
   const history = useHistory()
 
   return (
-    <IonPage>
+    <>
+    <FarmerMenu />
+
+    <IonPage id="dashboard-page">
       <IonHeader>
-        <IonToolbar>
+      <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton autoHide={false}></IonMenuButton>
+          </IonButtons>
           <IonTitle>Dashboard</IonTitle>
+          <IonButtons slot="end">
+            <IonButton onClick={() => {
+              auth.logout()
+              history.push("/login")
+            }}>
+            Logout</IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -46,5 +62,6 @@ export const DashboardPage = () => {
         </IonList>
       </IonContent>
     </IonPage>
+    </>
   )
 }
