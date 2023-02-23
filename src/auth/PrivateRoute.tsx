@@ -1,5 +1,5 @@
 import { Redirect, Route, RouteProps } from "react-router-dom"
-import { Role, useAuth } from "./store"
+import { Role, useAuth } from "."
 interface PrivateRouteProps extends RouteProps {
   children: React.ReactNode
   appRole: Role
@@ -13,7 +13,7 @@ export const PrivateRoute = ({
 
   return (
     <Route {...rest}>
-      {auth.role === appRole ? children : <Redirect to="/login" />}
+      {auth.user?.role === appRole ? children : <Redirect to="/login" />}
     </Route>
   )
 }

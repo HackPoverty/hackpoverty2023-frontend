@@ -1,12 +1,12 @@
-import React from "react"
-import { createRoot } from "react-dom/client"
-import App from "./App"
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration"
-import reportWebVitals from "./reportWebVitals"
-import "./i18n"
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./i18n";
+import reportWebVitals from "./reportWebVitals";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
-const container = document.getElementById("root")
-const root = createRoot(container as HTMLElement)
+const container = document.getElementById("root");
+const root = createRoot(container as HTMLElement);
 root.render(
   <React.StrictMode>
     <App />

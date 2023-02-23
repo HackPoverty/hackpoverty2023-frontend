@@ -11,7 +11,7 @@ import {
   IonToolbar,
 } from "@ionic/react"
 import { useHistory } from "react-router"
-import { useAuth } from "src/auth/store"
+import { useAuth } from "src/auth"
 
 export const DashboardPage = () => {
   const auth = useAuth()

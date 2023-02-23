@@ -1,14 +1,14 @@
-import { Redirect, Route, RouteProps } from "react-router-dom"
-import { useAuth } from "./store"
+import { Redirect, Route, RouteProps } from 'react-router-dom'
+import { useAuth } from '.'
 
 export const PublicRoute = ({ children, ...rest }: PublicRouteProps) => {
   const auth = useAuth()
 
   return (
-    <Route {...rest}>
-      {auth.role === undefined ? (
+    <Route {...rest} >
+      {auth.user?.role === undefined ? (
         children
-      ) : auth.role === "FARMER" ? (
+      ) : auth.user?.role === "FARMER" ? (
         <Redirect to="/dashboard" />
       ) : (
         <Redirect to="/farmers" />
