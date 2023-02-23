@@ -1,6 +1,6 @@
 import { IonHeader, IonToolbar, IonMenu, IonTitle, IonContent } from '@ionic/react';
 import React from 'react';
-import { useTranslation } from "react-i18next"
+
 interface ContainerProps {
   contentId: string;
 }
@@ -18,10 +18,10 @@ const FarmerMenu: React.FC<ContainerProps> = ({
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
-          <a><p>Dashboard</p></a>
-          <a><p>Chicken Registry</p></a>
-          <a><p>Egg Production</p></a>
-          <a><p>Request Support</p></a>
+          <p>Dashboard</p>
+          <p>Chicken Registry</p>
+          <p>Egg Production</p>
+          <p>Request Support</p>
         </IonContent>
     </IonMenu>
   )

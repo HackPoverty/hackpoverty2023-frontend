@@ -1,6 +1,5 @@
 import { IonHeader, IonToolbar, IonMenu, IonTitle, IonContent } from '@ionic/react';
 import React from 'react';
-import { useTranslation } from "react-i18next";
 
 interface ContainerProps {
   contentId: string;
@@ -19,9 +18,9 @@ const TechnicianMenu: React.FC<ContainerProps> = ({
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
-          <a><p>Dashboard</p></a>
-          <a><p>Register Visit</p></a>
-          <a><p>Personal Information</p></a>
+          <p>Dashboard</p>
+          <p>Register Visit</p>
+          <p>Personal Information</p>
         </IonContent>
     </IonMenu>
   )

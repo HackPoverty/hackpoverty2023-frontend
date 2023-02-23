@@ -1,6 +1,6 @@
 import { FarmerCard } from "@/components/farmers/FarmerCard";
 import TechnicianMenu from "@/components/TechnicianMenu";
-import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonMenu, IonMenuButton, IonPage, IonText, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonText, IonTitle, IonToolbar } from "@ionic/react";
 import { useHistory } from "react-router";
 import { useAuth } from "src/auth";
 
