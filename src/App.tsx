@@ -1,58 +1,75 @@
-import {
-  IonApp, IonRouterOutlet, setupIonicReact
-} from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
-import { Redirect, Route } from "react-router-dom";
+import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react"
+import { IonReactRouter } from "@ionic/react-router"
 
 /* Core CSS required for Ionic components to work properly */
-import "@ionic/react/css/core.css";
+import "@ionic/react/css/core.css"
 
 /* Basic CSS for apps built with Ionic */
-import "@ionic/react/css/normalize.css";
-import "@ionic/react/css/structure.css";
-import "@ionic/react/css/typography.css";
+import "@ionic/react/css/normalize.css"
+import "@ionic/react/css/structure.css"
+import "@ionic/react/css/typography.css"
 
 /* Optional CSS utils that can be commented out */
-import "@ionic/react/css/display.css";
-import "@ionic/react/css/flex-utils.css";
-import "@ionic/react/css/float-elements.css";
-import "@ionic/react/css/padding.css";
-import "@ionic/react/css/text-alignment.css";
-import "@ionic/react/css/text-transformation.css";
+import "@ionic/react/css/display.css"
+import "@ionic/react/css/flex-utils.css"
+import "@ionic/react/css/float-elements.css"
+import "@ionic/react/css/padding.css"
+import "@ionic/react/css/text-alignment.css"
+import "@ionic/react/css/text-transformation.css"
 
-/* Theme variables */
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { Redirect, Route } from "react-router-dom"
+import { PrivateRoute } from "./auth/PrivateRoute"
+import { PublicRoute } from "./auth/PublicRoute"
+import { AuthPage } from "./pages/AuthPage"
+import { DashboardPage } from "./pages/DashboardPage"
+import { FarmerJournalPage } from "./pages/farmerJournal"
+import { FarmChecklist } from "./pages/farmers/checklist"
+import { FarmRecordComplete } from "./pages/farmers/checklist/complete"
+import { FarmerDetailPage } from "./pages/farmers/FarmerDetailPage"
+import { FarmersListPage } from "./pages/farmers/FarmersListPage"
+
 import "./theme/variables.css";
 import "./global/custom.css";
 
-import { PrivateRoute } from "./auth/PrivateRoute";
-import { AuthPage } from "./pages/AuthPage";
-import { DashboardPage } from "./pages/DashboardPage";
-import { LogDataPage } from "./pages/LogDataPage";
-
-import { FarmersListPage } from "./pages/FarmersListPage";
-import { PublicRoute } from "./auth/PublicRoute";
-
 setupIonicReact({mode:'ios'});
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <PublicRoute exact path="/login">
-          <AuthPage />
-        </PublicRoute>
-        <PrivateRoute exact path="/dashboard" role="FARMER">
-          <DashboardPage />
-        </PrivateRoute>
-        <PrivateRoute exact path="/log-data" role="FARMER">
-          <DashboardPage />
-        </PrivateRoute>
-        <PrivateRoute exact path="/farmers" role="TECHNICIAN">
-          <FarmersListPage />
-        </PrivateRoute>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const queryClient = new QueryClient()
 
-export default App;
+const App: React.FC = () => (
+  <QueryClientProvider client={queryClient}>
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <PublicRoute exact path="/login">
+            <AuthPage />
+          </PublicRoute>
+          <PrivateRoute exact path="/dashboard" appRole="FARMER">
+            <DashboardPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/log-data" appRole="FARMER">
+            <DashboardPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/farmers" appRole="TECHNICIAN">
+            <FarmersListPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/farmers/:farmer_id" appRole="TECHNICIAN">
+            <FarmerDetailPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/farmers/:farmer_id/checklist" appRole="TECHNICIAN">
+            <FarmChecklist />
+          </PrivateRoute>
+          <PrivateRoute exact path="/farmers/:farmer_id/checklist/complete" appRole="TECHNICIAN">
+            <FarmRecordComplete />
+          </PrivateRoute>
+          <Route exact path="/">
+            <Redirect to="/login" />
+          </Route>
+          <FarmerJournalPage />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp >
+  </QueryClientProvider>
+)
+
+export default App

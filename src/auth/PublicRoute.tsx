@@ -1,19 +1,21 @@
-import { Redirect, Route, RouteProps } from 'react-router-dom';
-import { useAuth } from './store';
-interface PrivateRouteProps extends RouteProps {
-  children: React.ReactNode,
+import { Redirect, Route, RouteProps } from 'react-router-dom'
+import { useAuth } from '.'
 
-}
-export const PublicRoute: React.FC<PrivateRouteProps> = ({ children, ...rest }) => {
-  const auth = useAuth();
+export const PublicRoute = ({ children, ...rest }: PublicRouteProps) => {
+  const auth = useAuth()
 
   return (
     <Route {...rest} >
-      {auth.role === undefined ? (
+      {auth.user?.role === undefined ? (
         children
-      ) : auth.role === "FARMER" ? (
+      ) : auth.user?.role === "FARMER" ? (
         <Redirect to="/dashboard" />
-      ) : <Redirect to="/farmers" />}
+      ) : (
+        <Redirect to="/farmers" />
+      )}
     </Route>
-  );
-};
+  )
+}
+interface PublicRouteProps extends RouteProps {
+  children: React.ReactNode
+}
