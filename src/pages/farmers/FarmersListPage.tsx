@@ -10,8 +10,7 @@ const mockData = [
 
 export const FarmersListPage = () => {
   const now = new Date();
-  const {data, isLoading} = useQuery(["farmers"], getFarmers)
-  console.log(isLoading, data)
+  const { data, isLoading, error } = useQuery(["farmers"], getFarmers)
 
   return (
     <IonPage>
@@ -21,6 +20,8 @@ export const FarmersListPage = () => {
           <p>You have visited {mockData.length} farms this month</p>
           <p>Keep it up</p>
         </IonText>
+        {isLoading ? <IonText>Fetching farmers...</IonText> :
+          error ? <IonText>Something went wrong</IonText> : null}
         {data?.map(farmer => (<FarmerCard key={farmer.id} now={now} farmer={farmer} />))}
       </IonContent>
     </IonPage>
