@@ -1,5 +1,7 @@
 import { FarmerCard } from "@/components/farmers/FarmerCard";
 import { IonContent, IonPage, IonText } from "@ionic/react";
+import { useQuery } from "@tanstack/react-query";
+import { getFarmers } from "src/api/farmers";
 
 const mockData = [
   { id: 1, name: "John Doe", lastVisitedDate: new Date("2023-02-13") },
@@ -8,6 +10,9 @@ const mockData = [
 
 export const FarmersListPage = () => {
   const now = new Date();
+  const {data, isLoading} = useQuery(["farmers"], getFarmers)
+  console.log(isLoading, data)
+
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
@@ -16,14 +21,7 @@ export const FarmersListPage = () => {
           <p>You have visited {mockData.length} farms this month</p>
           <p>Keep it up</p>
         </IonText>
-        {mockData.map(farmer => (
-          <FarmerCard
-            id={farmer.id}
-            name={farmer.name}
-            lastVisitDate={farmer.lastVisitedDate}
-            now={now}
-            key={farmer.id} />
-        ))}
+        {data?.map(farmer => (<FarmerCard key={farmer.id} now={now} farmer={farmer} />))}
       </IonContent>
     </IonPage>
   );
