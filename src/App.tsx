@@ -18,6 +18,7 @@ import "@ionic/react/css/text-alignment.css"
 import "@ionic/react/css/text-transformation.css"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Redirect, Route } from "react-router-dom"
 import { PrivateRoute } from "./auth/PrivateRoute"
 import { PublicRoute } from "./auth/PublicRoute"
@@ -36,6 +37,7 @@ const queryClient = new QueryClient()
 
 const App: React.FC = () => (
   <QueryClientProvider client={queryClient}>
+    <ReactQueryDevtools />
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
