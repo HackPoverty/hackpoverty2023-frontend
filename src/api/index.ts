@@ -3,7 +3,7 @@ import { CaseType, deserialize } from "jsonapi-fractal"
 import { TOKEN_STORAGE_KEY } from "src/auth"
 
 const baseApi = axios.create({
-  baseURL: import.meta.env.BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
 })
 
 const jsonApi = axios.create({
