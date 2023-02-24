@@ -2,7 +2,7 @@ import axios from "axios"
 import { CaseType, deserialize } from "jsonapi-fractal"
 import { TOKEN_STORAGE_KEY } from "src/auth"
 
-const BASE_URL = "http://chicken.albernihosting.ca" as const
+const BASE_URL = import.meta.env.VITE_API_URL
 
 const baseApi = axios.create({
   baseURL: BASE_URL,
