@@ -2,14 +2,12 @@ import axios from "axios"
 import { CaseType, deserialize } from "jsonapi-fractal"
 import { TOKEN_STORAGE_KEY } from "src/auth"
 
-const BASE_URL = import.meta.env.VITE_API_URL
-
 const baseApi = axios.create({
-  baseURL: BASE_URL,
+  baseURL: import.meta.env.BASE_URL,
 })
 
 const jsonApi = axios.create({
-  baseURL: `${BASE_URL}/jsonapi_data`,
+  baseURL: import.meta.env.VITE_JSON_API_URL,
 })
 
 // Attach the storage key for every jsonApi request
