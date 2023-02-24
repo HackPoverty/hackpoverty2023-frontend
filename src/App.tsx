@@ -1,5 +1,6 @@
 import { IonApp, setupIonicReact } from "@ionic/react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { RootNavigator } from "./app/RootNavigator"
 
 /* Core CSS required for Ionic components to work properly */
@@ -27,6 +28,7 @@ const queryClient = new QueryClient()
 const App: React.FC = () => (
   <IonApp>
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools />
       <RootNavigator />
     </QueryClientProvider>
   </IonApp>
