@@ -1,19 +1,28 @@
-import { Redirect, Route, RouteProps } from "react-router-dom"
-import { Role, useAuth } from "./store"
+import { Redirect, Route } from "react-router-dom"
+import type { RouteProps } from "react-router-dom"
+import { Role, useAuth } from "."
 interface PrivateRouteProps extends RouteProps {
-  children: React.ReactNode
   appRole: Role
 }
 export const PrivateRoute = ({
-  children,
   appRole,
+  component: Component,
   ...rest
 }: PrivateRouteProps) => {
   const auth = useAuth()
 
+  if (Component === undefined) return null
+
   return (
-    <Route {...rest}>
-      {auth.role === appRole ? children : <Redirect to="/login" />}
-    </Route>
+    <Route
+      {...rest}
+      render={(props) =>
+        auth.user?.role === appRole ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
   )
 }
