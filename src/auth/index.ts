@@ -23,12 +23,13 @@ export type LoginData = {
   password: string;
 }
 
+const JWTUserRoles = ["authenticated", "ovo_farmer", "ovo_technician"] as const
 
 type JWTPayLoad = {
   iat: number,
   drupal: {
     uid: number,
-    role: string[]
+    role: typeof JWTUserRoles[number][]
   }
 }
 
