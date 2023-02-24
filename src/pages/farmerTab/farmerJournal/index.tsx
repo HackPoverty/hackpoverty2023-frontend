@@ -30,7 +30,7 @@ export const FarmerJournal = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
+            <IonBackButton defaultHref="/farmer-dashboard" />
           </IonButtons>
           <IonTitle>Farmer Journal</IonTitle>
         </IonToolbar>
