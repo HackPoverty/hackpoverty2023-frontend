@@ -7,20 +7,16 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/react"
 import { useQueries } from "@tanstack/react-query"
 import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 import { useParams } from "react-router"
-import { getFarmerById, getTechnicianVisits } from "src/api/farmers"
+import { getTechnicianVisits } from "src/api/technician"
+import { getFarmerById } from "src/api/users"
 
 dayjs.extend(relativeTime)
-
-const mockData = {
-  name: "John Doe",
-  visitDates: [new Date("2023-02-13"), new Date("2023-02-07")],
-}
 
 export const FarmerDetailPage = () => {
   const { farmer_id } = useParams<{ farmer_id: string }>()
@@ -42,7 +38,7 @@ export const FarmerDetailPage = () => {
       </IonHeader>
       <IonContent fullscreen class="ion-padding">
         {farmer.data ? (<>
-          <h1>{farmer.data.displayName}</h1>
+          <h1>{farmer.data.name}</h1>
           <p>Last visit was {dayjs(farmer.data.fieldFarmerLastVisited).fromNow(true)} ago</p>
         </>) : farmer.isLoading ? <p>Retrieving farmer profile...</p> : <p>Cannot retrive farmer profile</p>}
         <IonButton
