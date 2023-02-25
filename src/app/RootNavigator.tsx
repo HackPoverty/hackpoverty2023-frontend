@@ -45,16 +45,18 @@ export const RootNavigator = () => {
           <IonList>
             <IonMenuToggle>
               <UserMenu role={auth.user?.role} />
-              <IonItem>
-                <IonButton
-                  href="https://wa.me/?text=Hi%2C%20please%20visit%20my%20farm.%20My%20chickens%20are%20sick.%20"
-                  size="default"
-                  color="success"
-                >
-                  <IonIcon slot="start" icon={logoWhatsapp} />
-                  WhatsApp technician
-                </IonButton>
-              </IonItem>
+              {auth.user?.role === "FARMER" ? (
+                <IonItem>
+                  <IonButton
+                    href="https://wa.me/?text=Hi%2C%20please%20visit%20my%20farm.%20My%20chickens%20are%20sick.%20"
+                    size="default"
+                    color="success"
+                  >
+                    <IonIcon slot="start" icon={logoWhatsapp} />
+                    WhatsApp Technician
+                  </IonButton>
+                </IonItem>
+              ) : undefined}
               <IonItem>
                 <IonButton onClick={handleLogout} size="default">
                   Log out
