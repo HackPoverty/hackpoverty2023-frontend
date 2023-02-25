@@ -1,10 +1,8 @@
 import {
   IonButton,
   IonContent,
-  IonIcon,
   IonInput,
   IonItem,
-  IonLabel,
   IonLoading,
   IonNote,
   IonPage,
@@ -12,13 +10,11 @@ import {
 import { useMutation } from "@tanstack/react-query"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { LoginData, useAuth } from "src/auth"
-import { logoIonic, logoJavascript } from 'ionicons/icons';
 
 import "./AuthPage.css"
 
 export const AuthPage = () => {
   const auth = useAuth()
-
   const { register, handleSubmit } = useForm<LoginData>({})
   const { mutate, isLoading, error } = useMutation(auth.login)
   const onSubmit: SubmitHandler<LoginData> = (data) => mutate(data)
@@ -29,12 +25,8 @@ export const AuthPage = () => {
 
       <div className="log">
           
-
-          {/* <IonIcon name="logo-javascript"></IonIcon> */}
-          {/* <IonIcon icon={logoJavascript} size="large"></IonIcon> */}
-          
               <div className="logoIMG">
-                <img src="/public/assets/ui/logo.svg"  />
+                <img src="/public/assets/ui/logo.svg" alt="OvoFlow Logo"  />
                 <h1 className="logotitle ion-margin-top">ovoflow</h1>
               </div>
 
@@ -46,11 +38,9 @@ export const AuthPage = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <IonItem fill="outline">
-            {/* <IonLabel position="floating">Username</IonLabel> */}
             <IonInput placeholder="username" {...register("username")} required></IonInput>
           </IonItem>
           <IonItem fill="outline">
-            {/* <IonLabel position="floating">Password</IonLabel> */}
             <IonInput placeholder="password"
               type="password"
               {...register("password")}
