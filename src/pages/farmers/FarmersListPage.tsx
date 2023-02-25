@@ -10,7 +10,7 @@ import {
   IonToolbar,
 } from "@ionic/react"
 import { useQuery } from "@tanstack/react-query"
-import { getFarmers } from "src/api/farmers"
+import { getFarmers } from "src/api/getUsers"
 
 const mockData = [
   { id: 1, name: "John Doe", lastVisitedDate: new Date("2023-02-13") },
@@ -34,7 +34,7 @@ export const FarmersListPage = () => {
       <IonContent fullscreen class="ion-padding">
         <IonText>
           <h1>Hello technician!</h1>
-          <p>You have visited {mockData.length} farms this month</p>
+          <p>You have visited {data ? data.length : (<>&nbsp;&nbsp;</>) } farms this month</p>
           <p>Keep it up</p>
         </IonText>
         {isLoading ? <IonText>Fetching farmers...</IonText> :
