@@ -18,7 +18,7 @@ const getStatus = (days: number) => {
 }
 
 export const FarmerCard = ({ farmer, now }: Props) => {
-  const diff = now.getTime() - new Date(farmer.changed).getTime();
+  const diff = now.getTime() - new Date(farmer.fieldFarmerLastVisited).getTime();
   const days = Math.ceil(diff / (1000 * 3600 * 24));
 
   return <IonCard
@@ -27,10 +27,10 @@ export const FarmerCard = ({ farmer, now }: Props) => {
     routerLink={`/farmers/${farmer.id}`}>
     <IonRippleEffect />
     <IonCardHeader>
-      <IonCardTitle>{farmer.name}</IonCardTitle>
+      <IonCardTitle>{farmer.displayName}</IonCardTitle>
     </IonCardHeader>
     <IonCardContent>
-      Last visit was {dayjs(farmer.changed).from(now, true)} ago
+      Last visit was {dayjs(farmer.fieldFarmerLastVisited).from(now, true)} ago
     </IonCardContent>
   </IonCard>
 };
