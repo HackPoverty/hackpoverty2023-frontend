@@ -34,11 +34,17 @@ export const FarmChecklist = () => {
   });
   const history = useHistory();
   const params = useParams<{ farmer_id: string }>();
-  const { mutate } = useMutation(postTechnicianVisit)
+  const { mutate } = useMutation(postTechnicianVisit, {
+    onSuccess() {
+      history.replace(`/farmers/${params.farmer_id}/checklist/complete`)
+    },
+    onError() {
+      console.log("Error")
+    },
+  })
 
   const onSubmit: SubmitHandler<TechnicianVisit> = (data) => {
-    console.log(data);
-    mutate({ farmerId: params.farmer_id, visit: data })
+    return mutate({ farmerId: params.farmer_id, visit: data })
   }
 
   return (
