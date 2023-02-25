@@ -1,8 +1,9 @@
 import { User } from "./highLevelTypes";
 
 export const FARMER_ROLE_ID = "ovo_farmer" as const;
+export const TECHNICIAN_ROLE_ID = "ovo_technician" as const;
 
-export type Farmer = User & {
+export type Farmer = User<{
 
   /** How much a farmer borred to start his/her farm */
   fieldLoanAmount: number;
@@ -13,8 +14,7 @@ export type Farmer = User & {
   /** When a farmer was last visited by a technician (automatically updated
    *  in the backend) */
   fieldFarmerLastVisited: Date;
-}
+}>
 
-export const TECHNICIAN_ROLE_ID = "ovo_technician" as const;
 
-export type Technician = User;
+export type Technician = User<Record<string, never>>;
