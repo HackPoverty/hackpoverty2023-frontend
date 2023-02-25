@@ -1,5 +1,6 @@
 import { RadioOptions } from "@/components/farmers/RadioOptions";
 import { IonInput, IonLabel } from "@ionic/react";
+import { t } from "i18next";
 import { useFormContext } from "react-hook-form";
 import { DiseaseSigns, FarmRecord } from ".";
 
@@ -9,7 +10,7 @@ export const FarmRedFlag = () => {
   return <>
     <RadioOptions label="Sign of Disease" options={DiseaseSigns} name="redFlag.signOfDisease" />
     <div>
-      <IonLabel position="stacked">Name of Disease</IonLabel>
+      <IonLabel position="stacked">{t("name_of_disease")}</IonLabel>
       <IonInput {...register("redFlag.name")} />
     </div>
     <div>

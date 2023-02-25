@@ -13,5 +13,13 @@
   "login": "Entrar",
   "dashboard": "Painel de Controlo",
   "farmer_dashboard": "Painel de Controlo do Productor",
-  "complete_log": "Por favor, completa as actividades diárias"
+  "complete_log": "Por favor, completa as actividades diárias",
+  "record_is_complete_today": " Registos completos",
+  "contact_admin_or_farmer": "Entre em contacto com Administrador ou Productor",
+  "notes_ and_concerns_are_admin_or_farmers": "notas e preocupações são admin ou Productor",
+  "note_comments_or_concerns": "observe comentários ou preocupações",
+  "name_of_disease":"Nome da doença",
+  "type_of_vaccine_admisterred": "Tipo de vacina administrada"
+
+
 }
