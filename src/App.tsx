@@ -21,7 +21,10 @@ import "@ionic/react/css/text-transformation.css"
 
 import "./theme/variables.css"
 
-setupIonicReact()
+import "./theme/variables.css";
+import "./global/custom.css";
+
+setupIonicReact({mode:'ios'});
 
 const queryClient = new QueryClient()
 
