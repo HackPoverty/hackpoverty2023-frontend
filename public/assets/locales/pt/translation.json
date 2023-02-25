@@ -15,5 +15,7 @@
   "farmer_dashboard": "Painel de Controlo do Productor",
   "complete_log": "Por favor, completa as actividades diárias",
   "last_visit_was":  "A última visita foi a",
-  "ago":"atrás"
+  "ago":"atrás",
+  "logout": "Terminar sessão",
+  "menu": "Menu"
 }
