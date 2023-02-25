@@ -35,7 +35,7 @@ export const AuthPage = () => {
           
               <div className="logoIMG">
                 <img src="/public/assets/ui/logo.svg"  />
-                <h2 className="logotitle ion-margin-top">ovoflow</h2>
+                <h1 className="logotitle ion-margin-top">ovoflow</h1>
               </div>
 
           <div className='buttons'>
@@ -46,12 +46,12 @@ export const AuthPage = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <IonItem fill="outline">
-            <IonLabel position="floating">Username</IonLabel>
-            <IonInput {...register("username")} required></IonInput>
+            {/* <IonLabel position="floating">Username</IonLabel> */}
+            <IonInput placeholder="username" {...register("username")} required></IonInput>
           </IonItem>
           <IonItem fill="outline">
-            <IonLabel position="floating">Password</IonLabel>
-            <IonInput
+            {/* <IonLabel position="floating">Password</IonLabel> */}
+            <IonInput placeholder="password"
               type="password"
               {...register("password")}
               required

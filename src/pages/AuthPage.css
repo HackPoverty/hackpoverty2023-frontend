@@ -41,9 +41,9 @@ ion-item, ion-buttom {border-radius: 20px;}
 }
 
 .logoIMG img {
-  max-width: 87px;
+  max-width: 117px;
 }
 
-h2.logotitle {
-  color: var(--ion-color-light);
+h1.logotitle {
+  color: var(--ion-color-light) !important;
 }
