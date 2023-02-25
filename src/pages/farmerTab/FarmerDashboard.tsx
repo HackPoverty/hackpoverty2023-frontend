@@ -36,7 +36,7 @@ export const FarmerDashboard = () => {
           <h2>{t("complete_log")}</h2>
         </IonText>
         <IonButton routerLink="/farmer-journal" expand="block">
-          <IonLabel>Complete Daily Log</IonLabel>
+          <IonLabel>{t("complete_log_button")}</IonLabel>
         </IonButton>
       </IonContent>
     </IonPage>

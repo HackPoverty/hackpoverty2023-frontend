@@ -14,6 +14,7 @@
   "dashboard": "Dashboard",
   "farmer_dashboard": "Farmer Dashboard",
   "complete_log": "Please complete your daily log",
+  "complete_log_button": "Daily log Submission",
   "last_visit_was": "Last visit was",
   "ago":"ago",
   "logout": "Log out",
