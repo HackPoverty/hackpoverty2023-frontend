@@ -9,10 +9,10 @@ export const getFarmerJournalLogs = async (uid: string) => {
   return jsonDeserialize<FarmerJournal[]>(reponse.data)
 }
 
-export const postFarmerJournal = async (journal: FarmerJournal) => {
+export const postFarmerJournal = async (journal: PostFarmerJournalInputs) => {
   return jsonApi.post(
     `node/farmer_daily_journal`,
-    serialize<FarmerJournal>(journal, "node--farmer_daily_journal", {
+    serialize<PostFarmerJournalInputs>(journal, "node--farmer_daily_journal", {
       changeCase: CaseType.snakeCase,
     }),
     {
@@ -22,3 +22,8 @@ export const postFarmerJournal = async (journal: FarmerJournal) => {
     }
   )
 }
+
+export type PostFarmerJournalInputs = Omit<
+  FarmerJournal,
+  "id" | "changed" | "created"
+>
