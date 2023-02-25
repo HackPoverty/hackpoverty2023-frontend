@@ -1,4 +1,5 @@
 import { IonCheckbox, IonInput, IonLabel } from "@ionic/react";
+import { t } from "i18next";
 import { useFormContext } from "react-hook-form";
 import { FarmRecord } from ".";
 
@@ -10,7 +11,7 @@ export const FarmVaccinations = () => {
       <IonCheckbox {...register("vaccination.admisterred")} />
     </div>
     <div>
-      <IonLabel position="floating">Type of vaccine admisterred</IonLabel>
+      <IonLabel position="floating">{t("type_of_vaccine_admisterred")}</IonLabel>
       <IonInput {...register("vaccination.type")} />
     </div>
   </>
