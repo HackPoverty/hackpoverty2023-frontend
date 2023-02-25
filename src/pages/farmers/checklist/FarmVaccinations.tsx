@@ -1,5 +1,5 @@
 import { IonCheckbox, IonInput, IonItem, IonLabel, IonSelect, IonSelectOption } from "@ionic/react";
-import { Controller, useController, useFormContext } from "react-hook-form";
+import { useController, useFormContext } from "react-hook-form";
 import { TechnicianVisit } from "src/types/contentTypes";
 
 const COMMON_VACCINES = [
@@ -13,7 +13,7 @@ const COMMON_VACCINES = [
 
 export const FarmVaccinations = () => {
   const { control, register } = useFormContext<TechnicianVisit>()
-  const {field: givenVaccineField} = useController({control, name: "fieldVaccineGiven"})
+  const { field: givenVaccineField } = useController({ control, name: "fieldVaccineGiven" })
   return <>
     <IonItem fill="solid">
       <IonLabel>Were vaccines given?</IonLabel>
@@ -30,7 +30,7 @@ export const FarmVaccinations = () => {
           subHeader: "Select at least one",
         }}
         {...register("fieldVaccinations")}
-        >
+      >
         {COMMON_VACCINES.map(vaccine =>
           <IonSelectOption key={vaccine} value={vaccine}>
             {vaccine}

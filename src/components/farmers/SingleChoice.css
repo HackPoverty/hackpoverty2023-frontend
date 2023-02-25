@@ -1,0 +1,7 @@
+ion-radio {
+  display: none;
+}
+
+.item-radio-checked ion-label {
+  --color: red;
+}
