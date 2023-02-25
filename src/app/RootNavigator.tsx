@@ -23,6 +23,10 @@ import { FarmRecordComplete } from "@/pages/farmers/checklist/complete"
 import { FarmerDetailPage } from "@/pages/farmers/FarmerDetailPage"
 import { FarmersListPage } from "@/pages/farmers/FarmersListPage"
 import { useAuth } from "src/auth"
+import { paymentDashboard } from "@/pages/payments/paymentDashboard"
+import { RepayLoan } from "@/pages/payments/repayLoan"
+import { RecordSale } from "@/pages/payments/recordSale"
+
 
 export const RootNavigator = () => {
   const auth = useAuth()
@@ -66,6 +70,24 @@ export const RootNavigator = () => {
           path="/farmer-journal"
           exact
           component={FarmerJournal}
+          appRole="FARMER"
+        />
+        <PrivateRoute
+          path="/payment-dashboard"
+          exact
+          component={paymentDashboard}
+          appRole="FARMER"
+        />
+        <PrivateRoute
+          path="/repay-loan"
+          exact
+          component={RepayLoan}
+          appRole="FARMER"
+        />
+        <PrivateRoute
+          path="/record-sale"
+          exact
+          component={RecordSale}
           appRole="FARMER"
         />
 
