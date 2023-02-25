@@ -12,6 +12,7 @@ import {
 } from "@ionic/react"
 import { useTranslation } from "react-i18next";
 import { FarmerJournalList } from "@/pages/farmerTab/farmerDashboard/modules/FarmerJournalList"
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export const FarmerDashboard = () => {
   const { t, i18n } = useTranslation();
@@ -26,13 +27,7 @@ export const FarmerDashboard = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-      <IonButton onClick={() => {
-           i18n.changeLanguage('pt');
-         }}>Portugues</IonButton>
-
-         <IonButton onClick={() => {
-           i18n.changeLanguage('en');
-         }}>Ingles</IonButton>
+        <LanguageSwitcher />
         <IonText>
           <h2>{t("complete_log")}</h2>
         </IonText>

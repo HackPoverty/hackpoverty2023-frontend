@@ -9,6 +9,8 @@
   "chicken_name": "Nome de Galinha",
   "username": "Nome do Usuario",
   "password": "Palavra Passe",
+  "change_language": "Mudar idioma",
+  "logging_in": "Fazendo login...",
   "wrong_password": "Palavra-passe deu erada, tenta de novo",
   "login": "Entrar",
   "dashboard": "Painel de Controlo",

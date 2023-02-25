@@ -14,10 +14,11 @@ import { Translation, useTranslation } from "react-i18next"
 import { LoginData, useAuth } from "src/auth"
 
 import "./AuthPage.css"
+import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 
 export const AuthPage = () => {
   const auth = useAuth()
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { register, handleSubmit } = useForm<LoginData>({})
   const { mutate, isLoading, error } = useMutation(auth.login)
@@ -27,13 +28,6 @@ export const AuthPage = () => {
     <IonPage>
       <IonContent class="fancy-background">
         <div className="authentication-page">
-          <IonButton onClick={() => {
-            i18n.changeLanguage('pt');
-          }}>Português</IonButton>
-
-          <IonButton onClick={() => {
-            i18n.changeLanguage('en');
-          }}>English</IonButton>
           <div className="logo">
             <img className="logo__img" src="/assets/ui/logo.svg" alt="OvoFlow Logo" />
             <h1 className="logo__title ion-margin-top">ovoflow</h1>
@@ -55,8 +49,11 @@ export const AuthPage = () => {
                 <IonButton color={"secondary"} expand="block" type="submit" disabled={isLoading}>
                 {t('login')}
                 </IonButton>
-                <IonLoading message="Logging in..." isOpen={isLoading} />
+                <IonLoading message={t('logging_in') || 'Logging In...'} isOpen={isLoading} />
               </form>
+              <div className="ion-padding">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         </div>
