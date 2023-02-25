@@ -1,14 +1,15 @@
 import { IonCard, IonCardContent } from "@ionic/react"
+import { TechnicianVisit } from "src/types/contentTypes"
 
-interface Props {
-  index: number
-  date: Date
+interface PastVisitRecordProps {
+  technicianVisit: TechnicianVisit
 }
 
-export const PastVisitRecord = ({ date }: Props) => {
+export const PastVisitRecord = ({ technicianVisit }: PastVisitRecordProps) => {
   return <IonCard class="ion-no-margin ion-margin-vertical">
     <IonCardContent>
-      <p><strong>Date visited: </strong>{date.toLocaleDateString("en-us", {
+      <p><strong>{technicianVisit.title}</strong></p>
+      <p>{new Date(technicianVisit.created).toLocaleDateString("en-us", {
         day: "numeric",
         month: "long",
         year: "numeric",

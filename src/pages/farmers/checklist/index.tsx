@@ -21,8 +21,6 @@ export const FarmChecklist = () => {
   const history = useHistory();
   const params = useParams<{ farmer_id: string }>();
 
-  console.log(step);
-
   // Reset everything before mounting
   useEffect(() => {
     setStep(0);
