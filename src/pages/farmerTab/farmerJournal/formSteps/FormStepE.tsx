@@ -7,11 +7,11 @@ import {
   IonContent,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
-import { FarmerJournalFormInputs } from ".."
+import type { PostFarmerJournalInputs } from "src/api/farmer"
 import { FormStepD } from "./FormStepD"
 
 export const FormStepE = () => {
-  const { watch } = useFormContext<FarmerJournalFormInputs>()
+  const { watch } = useFormContext<PostFarmerJournalInputs>()
   const watchAllFields = watch()
 
   return (
