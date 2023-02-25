@@ -3,6 +3,7 @@ import {
   IonContent,
   IonInput,
   IonItem,
+  IonLabel,
   IonLoading,
   IonNote,
   IonPage,
@@ -26,7 +27,8 @@ export const AuthPage = () => {
       <div className="log">
           
               <div className="logoIMG">
-                <img src="/public/assets/ui/logo.svg" alt="OvoFlow Logo"  />
+                
+                <img src="/assets/ui/logo.svg" alt="OvoFlow Logo"  />
                 <h1 className="logotitle ion-margin-top">ovoflow</h1>
               </div>
 
@@ -38,10 +40,12 @@ export const AuthPage = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <IonItem fill="outline">
+          <IonLabel position="floating">Username</IonLabel>
             <IonInput placeholder="username" {...register("username")} required></IonInput>
           </IonItem>
           <IonItem fill="outline">
-            <IonInput placeholder="password"
+          <IonLabel position="floating">Password</IonLabel>
+            <IonInput 
               type="password"
               {...register("password")}
               required

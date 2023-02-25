@@ -3,28 +3,28 @@
   font-family: 'PoppinsSemiBold';
   font-style: normal;
   font-weight: normal;
-  src: url('/public/font/Poppins-SemiBold.ttf');
+  src: url('/font/Poppins-SemiBold.ttf');
 }
 
 @font-face {
   font-family: 'PoppinsRegular';
   font-style: normal;
   font-weight: normal;
-  src: url('/public/font/Poppins-Regular.ttf');
+  src: url('/font/Poppins-Regular.ttf');
 }
 
 @font-face {
   font-family: 'PoppinsMedium';
   font-style: normal;
   font-weight: normal;
-  src: url('/public/font/Poppins-Medium.ttf');
+  src: url('/font/Poppins-Medium.ttf');
 }
 
 @font-face {
   font-family: 'PoppinsBold';
   font-style: normal;
   font-weight: normal;
-  src: url('/public/font/Poppins-Bold.ttf');
+  src: url('/font/Poppins-Bold.ttf');
 }
 
 * {
