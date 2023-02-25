@@ -72,6 +72,7 @@ export const FarmChecklist = () => {
                     onClick={() => setStep(step => step + 1)}
                     className="ion-text-uppercase"
                     expand="block"
+                    type="button"
                   >Next</IonButton>
                   : <IonButton
                     type="submit"
