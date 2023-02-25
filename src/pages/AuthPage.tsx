@@ -11,11 +11,11 @@ import {
 import { useMutation } from "@tanstack/react-query"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { LoginData, useAuth } from "src/auth"
+
 import "./AuthPage.css"
 
 export const AuthPage = () => {
   const auth = useAuth()
-
   const { register, handleSubmit } = useForm<LoginData>({})
   const { mutate, isLoading, error } = useMutation(auth.login)
   const onSubmit: SubmitHandler<LoginData> = (data) => mutate(data)
