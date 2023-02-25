@@ -1,5 +1,5 @@
 import { IonCard, IonCardContent } from "@ionic/react"
-import { TechnicianVisit } from "src/api/farmers"
+import { TechnicianVisit } from "src/types/contentTypes"
 
 interface PastVisitRecordProps {
   technicianVisit: TechnicianVisit

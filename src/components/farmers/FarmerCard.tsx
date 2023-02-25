@@ -27,7 +27,7 @@ export const FarmerCard = ({ farmer, now }: Props) => {
     routerLink={`/farmers/${farmer.id}`}>
     <IonRippleEffect />
     <IonCardHeader>
-      <IonCardTitle>{farmer.displayName}</IonCardTitle>
+      <IonCardTitle>{farmer.name}</IonCardTitle>
     </IonCardHeader>
     <IonCardContent>
       Last visit was {dayjs(farmer.fieldFarmerLastVisited).from(now, true)} ago
