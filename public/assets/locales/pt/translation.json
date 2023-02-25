@@ -17,5 +17,10 @@
   "last_visit_was":  "A última visita foi a",
   "ago":"atrás",
   "logout": "Terminar sessão",
-  "menu": "Menu"
+  "menu": "Menu",
+  "notes_and_concerns_for_admins_or_technicians": "Notas e preocupações para administradores ou técnicos",
+  "back": "Voltar",
+  "next": "Próximo",
+  "submit": "Enviar",
+  "confirm_your_submission":"Confirmar seu envio"
 }

@@ -17,5 +17,10 @@
   "last_visit_was": "Last visit was",
   "ago":"ago",
   "logout": "Log out",
-  "menu":"Menu"
+  "menu":"Menu",
+  "notes_and_concerns_for_admins_or_technicians":"Notes and concerns for admins or technicians",
+  "back": "Back",
+  "next":"Next",
+  "submit": "Submit",
+  "confirm_your_submission":"Confirm your submission"
 }
