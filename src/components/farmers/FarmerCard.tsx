@@ -1,7 +1,7 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonRippleEffect } from "@ionic/react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Farmer } from "src/api/userTypes";
+import { Farmer } from "src/types/userTypes";
 import "./FarmerCard.css";
 
 dayjs.extend(relativeTime)
