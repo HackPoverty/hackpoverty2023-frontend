@@ -1,3 +1,10 @@
+.fancy-background {
+  --background: #516092;
+  --background: url(/assets/ui/bg.svg) no-repeat center center / cover;
+}
+
+ion-item {  border-radius: var(--custom-box-radius);  }
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -7,43 +14,33 @@
   gap: 1rem;
 }
 
-ion-content{
-  --background: #516092 !important;
-  --background: url(/public/assets/ui/bg.svg) no-repeat center center / cover !important;
-
-}
-
-ion-item, ion-buttom {border-radius: 20px;}
-
-.log {
+.authentication-page {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   height: 100vh;
   text-align: center;
+  margin: 0;
 }
-.log .buttons {
+
+.buttons {
   text-align: center;
   width: calc(100% - 20px);
 }
-.log .buttons .funcions {
-  position: absolute;
-  width: 100%;
-  bottom: 16px;
-}
 
-
-
-
-.logoIMG {
+/**
+ * Logo Styles
+ */
+.logo {
   width: 100%;
   text-align: center;
 }
 
-.logoIMG img {
+.logo__img {
   max-width: 117px;
+  max-height: calc(100vh - 23em);
 }
 
-h1.logotitle {
-  color: var(--ion-color-light) !important;
+.logo__title {
+  color: var(--ion-color-light);
 }

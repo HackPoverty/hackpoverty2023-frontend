@@ -1,6 +1,11 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+/** Custom Variables **/
+:root {
+  --custom-box-radius: 20px;
+}
+
 /** Ionic CSS Variables **/
 :root {
     --ion-color-primary: #516092;

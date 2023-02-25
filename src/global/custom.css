@@ -40,6 +40,5 @@ ion-content {
 }
 
 ion-button {
-  --border-radius: 20px;
+  --border-radius: var(--custom-box-radius);
 }
-
