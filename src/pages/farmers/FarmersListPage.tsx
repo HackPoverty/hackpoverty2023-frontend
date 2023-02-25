@@ -10,18 +10,11 @@ import {
   IonToolbar,
 } from "@ionic/react"
 import { useQuery } from "@tanstack/react-query"
-import { getFarmers } from "src/api/getUsers"
-
-const mockData = [
-  { id: 1, name: "John Doe", lastVisitedDate: new Date("2023-02-13") },
-  { id: 2, name: "Jane Doe", lastVisitedDate: new Date("2023-02-17") },
-]
+import { getFarmers } from "src/api/users"
 
 export const FarmersListPage = () => {
   const now = new Date()
   const { data, isLoading, error } = useQuery(["farmers"], getFarmers)
-
-  console.log(data);
 
   return (
     <IonPage>

@@ -9,19 +9,23 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react"
+import { useQueries } from "@tanstack/react-query"
 import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 import { useParams } from "react-router"
+import { getTechnicianVisits } from "src/api/technician"
+import { getFarmerById } from "src/api/users"
 
 dayjs.extend(relativeTime)
 
-const mockData = {
-  name: "John Doe",
-  visitDates: [new Date("2023-02-13"), new Date("2023-02-07")],
-}
-
 export const FarmerDetailPage = () => {
-  const params = useParams<{ farmer_id: string }>()
+  const { farmer_id } = useParams<{ farmer_id: string }>()
+  const [farmer, pastVisits] = useQueries({
+    queries: [
+      { queryKey: ["farmer", farmer_id], queryFn: async () => await getFarmerById(farmer_id) },
+      { queryKey: ["technicalVisits", farmer_id], queryFn: async () => await getTechnicianVisits(farmer_id) },
+    ],
+  })
   return (
     <IonPage>
       <IonHeader>
@@ -33,20 +37,22 @@ export const FarmerDetailPage = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="ion-padding">
-        <h1>{mockData.name}</h1>
-        <p>Last visit was {dayjs(mockData.visitDates[0]).fromNow(true)} ago</p>
+        {farmer.data ? (<>
+          <h1>{farmer.data.name}</h1>
+          <p>Last visit was {dayjs(farmer.data.fieldFarmerLastVisited).fromNow(true)} ago</p>
+        </>) : farmer.isLoading ? <p>Retrieving farmer profile...</p> : <p>Cannot retrive farmer profile</p>}
         <IonButton
-          routerLink={`/farmers/${params.farmer_id}/checklist`}
+          routerLink={`/farmers/${farmer_id}/checklist`}
           className="ion-text-uppercase record-btn"
           expand="block"
         >
           Record Entry
         </IonButton>
-        <h4>Address</h4>
-        <p>123 Anywhere St</p>
         <h4>Past Visit Records</h4>
-        {mockData.visitDates.map((date, index) => (
-          <PastVisitRecord date={date} key={index} index={index + 1} />
+        {pastVisits.isLoading ? <p>Retrieving farmer profile...</p> :
+          !pastVisits.data ? <p>Cannot retrive farmer profile</p> : null}
+        {pastVisits.data?.map((visit) => (
+          <PastVisitRecord technicianVisit={visit} key={visit.id} />
         ))}
         <h4>Farmer Records</h4>
       </IonContent>
