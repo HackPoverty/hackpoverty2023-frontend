@@ -24,15 +24,10 @@ export const FarmChecklist = () => {
   const [step, setStep] = useState(0);
   const methods = useForm<TechnicianVisit>({
     defaultValues: {
-      fieldDiseaseNames: null,
+      fieldDiseaseNames: [],
       fieldOtherpossibledisease: null,
       fieldOtherVaccine: null,
       fieldVisitComments: null,
-      fieldLightSufficiency: 5,
-      fieldWaterCleanliness: 5,
-      fieldFeedQuantity: 5,
-      fieldCleanBedding: 5,
-      fieldVentillation: 5,
       fieldVaccineGiven: false,
       fieldVaccinations: [],
     },

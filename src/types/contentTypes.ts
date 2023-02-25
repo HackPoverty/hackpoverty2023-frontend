@@ -22,8 +22,47 @@ export type GPSCoordinates = {
 /** The possible values for the field_diease field */
 export const PresenceOfDisease = ['Yes', 'No', 'Possible'] as const;
 
-/** The possible values for the scale fields */
-export const Quality = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
+/** 
+ *  The possible values to rank the farm conditions are from 0 to 10
+ *  However, the record only stores 0, 5, or 10
+ */
+
+export const QUALITY_SCALES = [0, 5, 10] as const
+export type Quality = (typeof QUALITY_SCALES)[number]
+export const getQualityName = (score: Quality) => {
+  if (score === 0) return "Bad"
+  if (score === 5) return "Okay"
+  return "Good"
+}
+
+/**
+ * The values for possible diseases
+ */
+export const DISEASES = ["mareks", "newcastle", "bronchtitis", "laryngotracheitis", "fowl_pox", "fowl_chlorea"] as const
+export type Disease = (typeof DISEASES)[number]
+export const DISEASE_MAP = new Map<Disease, string>([
+  ["mareks", "Marek's"],
+  ["newcastle", "New Castle"],
+  ["bronchtitis", "Bronchtitis"],
+  ["laryngotracheitis", "Laryngotracheitis"],
+  ["fowl_pox", "Fowl Pox"],
+  ["fowl_chlorea", "Fowl Cholera"],
+])
+
+
+/**
+ * The values for possible vaccines
+ */
+export const VACCINES = ["newcastle", "bronchtitis", "fowl_pox", "fowl_chlorea"] as const
+export type Vaccine = (typeof VACCINES)[number]
+export const VACCINE_MAP = new Map<Vaccine, string>([
+  ["newcastle", "New Castle"],
+  ["bronchtitis", "Bronchtitis"],
+  ["fowl_pox", "Fowl Pox"],
+  ["fowl_chlorea", "Fowl Cholera"],
+])
+
+
 
 /**
  * The `node--technician_visit` type
@@ -38,7 +77,7 @@ export type TechnicianVisit = {
   fieldDisease: (typeof PresenceOfDisease)[number];
 
   /** Common disease names */
-  fieldDiseaseNames: string | null;
+  fieldDiseaseNames: Disease[];
 
   /** An other field in case disease is not among common options */
   fieldOtherpossibledisease: string | null;
@@ -48,26 +87,26 @@ export type TechnicianVisit = {
   fieldVaccineGiven: boolean;
 
   /** Common vaccines that were administered */
-  fieldVaccinations: string[];
+  fieldVaccinations: Vaccine[];
 
   /** List the name of a vaccine that is not among the previous options */
   fieldOtherVaccine: string | null;
 
 
   /** Checklist field: how clean the bedding is */
-  fieldCleanBedding: (typeof Quality)[number];
+  fieldCleanBedding: Quality;
 
   /** Checklist field: how good the feed is */
-  fieldFeedQuantity: (typeof Quality)[number];
+  fieldFeedQuantity: Quality;
 
   /** Checklist field: whether chickens are getting enough light */
-  fieldLightSufficiency: (typeof Quality)[number];
+  fieldLightSufficiency: Quality;
 
   /** Checklist field: whether the chicken pens are well ventilated */
-  fieldVentillation: (typeof Quality)[number];
+  fieldVentillation: Quality;
 
   /** Checklist field: how clean the water is */
-  fieldWaterCleanliness: (typeof Quality)[number];
+  fieldWaterCleanliness: Quality;
 
 }
 

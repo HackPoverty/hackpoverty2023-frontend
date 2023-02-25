@@ -1,15 +1,6 @@
 import { IonCheckbox, IonInput, IonItem, IonLabel, IonSelect, IonSelectOption } from "@ionic/react";
 import { useController, useFormContext } from "react-hook-form";
-import { TechnicianVisit } from "src/types/contentTypes";
-
-const COMMON_VACCINES = [
-  "Marek's",
-  "Newcastle",
-  "Bronchtitis",
-  "Laryngotracheitis",
-  "Fowl Pox",
-  "Fowl Chlorea",
-]
+import { TechnicianVisit, VACCINES, VACCINE_MAP } from "src/types/contentTypes";
 
 export const FarmVaccinations = () => {
   const { control, register } = useFormContext<TechnicianVisit>()
@@ -31,14 +22,14 @@ export const FarmVaccinations = () => {
         }}
         {...register("fieldVaccinations")}
       >
-        {COMMON_VACCINES.map(vaccine =>
+        {VACCINES.map(vaccine =>
           <IonSelectOption key={vaccine} value={vaccine}>
-            {vaccine}
+            {VACCINE_MAP.get(vaccine)}
           </IonSelectOption>)}
       </IonSelect>
     </IonItem>
     <IonItem fill="solid" disabled={!givenVaccineField.value}>
-      <IonLabel position="floating">Other possible vaccine</IonLabel>
+      <IonLabel position="floating">Other possible vaccines</IonLabel>
       <IonInput {...register("fieldOtherVaccine")} />
     </IonItem>
   </>

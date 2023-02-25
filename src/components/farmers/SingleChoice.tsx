@@ -1,4 +1,4 @@
-import { IonCol, IonGrid, IonItem, IonLabel, IonRadio, IonRadioGroup, IonRow } from "@ionic/react";
+import { IonItem, IonLabel } from "@ionic/react";
 import { FieldPath, useFormContext } from "react-hook-form";
 import { TechnicianVisit } from "src/types/contentTypes";
 import "./SingleChoice.css";
@@ -7,30 +7,20 @@ interface SingleChoiceProps<T> {
   label: string
   name: FieldPath<TechnicianVisit>
   options: T[]
-  displayFn?: (value: T) => string
+  displayFn?: (value: T) => string | undefined
 }
 
 export function SingleChoice<T extends string | number>({ label, name, options, displayFn }: SingleChoiceProps<T>) {
   const { register } = useFormContext<TechnicianVisit>()
   return (
     <IonItem fill="solid">
-      <IonGrid>
-        <IonRow>
-          <IonLabel>
-            {label}
-          </IonLabel>
-        </IonRow>
-        <IonRadioGroup {...register(name)}>
-          <IonRow class="ion-padding-vertical">
-            {options.map(option => (
-              <IonCol key={`${name}.${option}`}>
-                <IonLabel>{displayFn ? displayFn(option) : option}</IonLabel>
-                <IonRadio value={option} />
-              </IonCol>
-            ))}
-          </IonRow>
-        </IonRadioGroup>
-      </IonGrid>
+      <IonLabel position="stacked">{label}</IonLabel>
+      <div className="options-row">
+        {options.map(option => <div key={`${name}.${option}`}>
+          <input type="radio" value={option} {...register(name)} id={`${name}.${option}`} />
+          <label htmlFor={`${name}.${option}`} className="ion-text-capitalize">{displayFn ? displayFn(option) : option}</label>
+        </div>)}
+      </div>
     </IonItem>
   )
 }
