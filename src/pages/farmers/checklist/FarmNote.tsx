@@ -1,13 +1,11 @@
-import { IonLabel, IonTextarea } from "@ionic/react";
+import { IonItem, IonLabel, IonTextarea } from "@ionic/react";
 import { useFormContext } from "react-hook-form";
-import { FarmRecord } from ".";
+import { TechnicianVisit } from "src/types/contentTypes";
 
 export const FarmNote = () => {
-  const { register } = useFormContext<FarmRecord>();
-  return <>
-    <div>
-      <IonLabel position="floating">Notes and concerns are admin or farmers</IonLabel>
-      <IonTextarea {...register("note")} />
-    </div>
-  </>
+  const { register } = useFormContext<TechnicianVisit>();
+  return <IonItem fill="solid">
+    <IonLabel position="stacked">Comments for farmers or admin</IonLabel>
+    <IonTextarea {...register("fieldVisitComments")} autoGrow rows={5} />
+  </IonItem>
 };

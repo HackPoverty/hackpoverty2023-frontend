@@ -1,8 +1,9 @@
 import { IonCard, IonCardContent } from "@ionic/react"
 import { TechnicianVisit } from "src/types/contentTypes"
+import { Node } from "src/types/highLevelTypes"
 
 interface PastVisitRecordProps {
-  technicianVisit: TechnicianVisit
+  technicianVisit: Node<TechnicianVisit>
 }
 
 export const PastVisitRecord = ({ technicianVisit }: PastVisitRecordProps) => {

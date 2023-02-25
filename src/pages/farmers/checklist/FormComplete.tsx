@@ -1,6 +1,6 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 import { useHistory, useParams } from "react-router";
-import "./complete.css";
+import "./FormComplete.css";
 
 export const FarmRecordComplete = () => {
   const history = useHistory();
