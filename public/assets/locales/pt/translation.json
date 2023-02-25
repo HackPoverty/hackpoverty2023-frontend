@@ -13,5 +13,24 @@
   "login": "Entrar",
   "dashboard": "Painel de Controlo",
   "farmer_dashboard": "Painel de Controlo do Productor",
-  "complete_log": "Por favor, completa as actividades diárias"
+  "complete_log": "Por favor, completa as actividades diárias",
+  "farmer_journal": "Actividades diárias do Productor",
+  "journal_of": "Actividades diárias de",
+  "cancel": "Cancelar",
+  "record_data": "Guardar dados",
+  "chickens": "Galinhas",
+  "next": "Próximo", 
+  "initial_stock": "Estoque Inicial",
+  "mortality": "Mortalidade",
+  "number_of_chicken_deaths": "Número de galinhas mortas",
+  "mortality_prolapse": "Mortalidade por Prolapso",
+  "large_eggs_produced": "Ovos Grandes Produzidos",  
+  "medium_eggs_produced": "Ovos Médios Produzidos",
+  "small_eggs_produced": "Ovos Pequenos Produzidos",
+  "number_of_damage_eggs": "Número de Ovos Estragados",
+  "lay_frequency": "Frequência de ovos Produzidos",
+  "industry_standard": "Melhores Prácticas",
+  "back": "Voltar",
+  "total_feed_given": "Total de Alimento Dado"
+
 }
