@@ -45,8 +45,10 @@ export const RootNavigator = () => {
           <IonList>
             <IonMenuToggle>
               <UserMenu role={auth.user?.role} />
-              {auth.user?.role === "FARMER" ? (
-                <IonItem>
+            </IonMenuToggle>
+            {auth.user?.role === "FARMER" ? (
+              <IonItem lines="none">
+                <IonMenuToggle>
                   <IonButton
                     href="https://wa.me/?text=Hi%2C%20please%20visit%20my%20farm.%20My%20chickens%20are%20sick.%20"
                     size="default"
@@ -55,14 +57,21 @@ export const RootNavigator = () => {
                     <IonIcon slot="start" icon={logoWhatsapp} />
                     WhatsApp Technician
                   </IonButton>
-                </IonItem>
-              ) : undefined}
-              <IonItem>
-                <IonButton onClick={handleLogout} size="default">
+                </IonMenuToggle>
+              </IonItem>
+            ) : undefined}
+            <IonItem>
+              <IonMenuToggle>
+                <IonButton
+                  onClick={handleLogout}
+                  color="danger"
+                  size="default"
+                  fill="clear"
+                >
                   Log out
                 </IonButton>
-              </IonItem>
-            </IonMenuToggle>
+              </IonMenuToggle>
+            </IonItem>
           </IonList>
         </IonContent>
       </IonMenu>
