@@ -1,16 +1,4 @@
-export type User = {
-  /** The uuid code */
-  id: string;
-  
-  /** The username of the user */
-  name: string;
-
-  /** When the user was created */
-  changed: Date;
-
-  /** When the user was created */
-  created: Date;
-}
+import { User } from "./highLevelTypes";
 
 export const FARMER_ROLE_ID = "ovo_farmer" as const;
 
