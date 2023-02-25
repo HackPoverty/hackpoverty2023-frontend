@@ -1,5 +1,8 @@
 import { Node } from './highLevelTypes';
 
+/**
+ * Geoinformation for a Drupal Geofield
+ */
 export type GPSCoordinates = {
   value: string;
   geo_type: string;
@@ -18,10 +21,15 @@ export type GPSCoordinates = {
   latlon: string;
 }
 
+/** The possible values for the field_diease field */
 export type PresenceOfDisease = ['Yes', 'No', 'Possible'];
 
+/** The possible values for the scale fields */
 export type DiseaseScale = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+/**
+ * The `node--technician_visit` type
+ */
 export type TechnicianVisit = Node & {
   field_comments: null,
 
@@ -63,3 +71,7 @@ export type TechnicianVisit = Node & {
   /** Checklist field: how clean the water is */
   field_water_cleanliness: DiseaseScale[number]
 }
+
+/**
+ * The node--farmer-journal type
+ */
