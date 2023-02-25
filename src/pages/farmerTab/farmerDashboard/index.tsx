@@ -10,6 +10,7 @@ import {
   IonButton,
   IonText,
 } from "@ionic/react"
+import { FarmerJournalList } from "@/pages/farmerTab/farmerDashboard/modules/FarmerJournalList"
 
 export const FarmerDashboard = () => {
   return (
@@ -29,6 +30,7 @@ export const FarmerDashboard = () => {
         <IonButton routerLink="/farmer-journal" expand="block">
           <IonLabel>Complete Daily Log</IonLabel>
         </IonButton>
+        <FarmerJournalList />
       </IonContent>
     </IonPage>
   )

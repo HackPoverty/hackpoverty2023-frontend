@@ -26,12 +26,13 @@ import { useAuth } from "src/auth"
 
 export const RootNavigator = () => {
   const auth = useAuth()
+  const isLoggedOut = auth.user?.role === undefined
   const handleLogout = auth.logout
 
   return (
     <IonReactRouter>
       {/* MENU */}
-      <IonMenu contentId="main">
+      <IonMenu contentId="main" disabled={isLoggedOut}>
         <IonHeader>
           <IonToolbar>
             <IonTitle>Menu</IonTitle>
