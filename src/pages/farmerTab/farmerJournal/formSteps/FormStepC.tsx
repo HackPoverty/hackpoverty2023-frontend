@@ -8,22 +8,24 @@ import {
   IonNavLink,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { FarmerJournalFormInputs } from ".."
 import { FormStepB } from "./FormStepB"
 import { FormStepD } from "./FormStepD"
 
 export const FormStepC = () => {
+  const { t } = useTranslation();
   const { register } = useFormContext<FarmerJournalFormInputs>()
 
   return (
     <IonContent className="page">
       <IonList>
         <IonItem>
-          <IonLabel position="stacked">Total Feed Given</IonLabel>
+          <IonLabel position="stacked">{t('total_feed_given')}</IonLabel>
           <IonInput type="number" {...register("totalFeedAmount")} />
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">Industry Standard</IonLabel>
+          <IonLabel position="stacked">{t('industry_standard')}</IonLabel>
           <IonInput
             type="number"
             {...register("totalFeedAmountIndustryStandard")}
@@ -31,10 +33,10 @@ export const FormStepC = () => {
         </IonItem>
       </IonList>
       <IonNavLink routerDirection="back" component={() => <FormStepB />}>
-        <IonButton>BACK</IonButton>
+        <IonButton>{t('back')}</IonButton>
       </IonNavLink>
       <IonNavLink routerDirection="forward" component={() => <FormStepD />}>
-        <IonButton>NEXT</IonButton>
+        <IonButton>{t('next')}</IonButton>
       </IonNavLink>
     </IonContent>
   )
