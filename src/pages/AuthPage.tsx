@@ -60,7 +60,7 @@ export const AuthPage = () => {
           {error ? (
             <IonNote color="danger">Incorrect username or password</IonNote>
           ) : null}
-          <IonButton expand="block" type="submit" disabled={isLoading}>
+          <IonButton color={"secondary"} expand="block" type="submit" disabled={isLoading}>
             Login
           </IonButton>
           <IonLoading message="Logging in..." isOpen={isLoading} />
