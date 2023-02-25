@@ -39,3 +39,5 @@ packages/react-devtools-timeline/dist
 
 .env
 dev-dist
+
+pnpm-lock.yaml
