@@ -34,7 +34,7 @@ export const FarmChecklist = () => {
   });
   const history = useHistory();
   const params = useParams<{ farmer_id: string }>();
-  const { mutate } = useMutation(postTechnicianVisit, {
+  const { mutate, isLoading } = useMutation(postTechnicianVisit, {
     onSuccess() {
       history.replace(`/farmers/${params.farmer_id}/checklist/complete`)
     },
@@ -84,7 +84,8 @@ export const FarmChecklist = () => {
                     type="submit"
                     className="ion-text-uppercase"
                     expand="block"
-                  >Submit</IonButton>}
+                    disabled={isLoading}
+                  >{isLoading ? "Submitting..." : "Submit"}</IonButton>}
               </IonCol>
             </IonRow>
           </form>
