@@ -5,7 +5,7 @@ import { Node } from './highLevelTypes';
  */
 export type GPSCoordinates = {
   value: string;
-  geo_type: string;
+  geoType: string;
 
   /** The Latitude */
   lat: number;
@@ -31,47 +31,88 @@ export type DiseaseScale = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  * The `node--technician_visit` type
  */
 export type TechnicianVisit = Node & {
-  field_comments: null,
+  fieldVisitComments: null,
 
   /** GPS coordinates of where the visit was taken */
-  field_gps_coordinates: GPSCoordinates|null,
+  fieldGpsCoordinates: GPSCoordinates|null,
 
   /** The likelihood of the presence of a disease */
-  field_disease: PresenceOfDisease[number],
+  fieldDisease: PresenceOfDisease[number],
 
   /** Common disease names */
-  field_disease_names: string|null,
+  fieldDiseaseNames: string|null,
 
   /** An other field in case disease is not among common options */
-  field_otherpossibledisease: string|null,
+  fieldOtherpossibledisease: string|null,
 
 
   /** Whether a vaccine was given or not */
-  field_vaccine_given: boolean,
+  fieldVaccineGiven: boolean,
 
   /** Common vaccines that were administered */
-  field_vaccinations: string[],
+  fieldVaccinations: string[],
 
   /** List the name of a vaccine that is not among the previous options */
-  field_other_vaccine: string|null,
+  fieldOtherVaccine: string|null,
 
 
   /** Checklist field: how clean the bedding is */
-  field_clean_bedding: DiseaseScale[number],
+  fieldCleanBedding: DiseaseScale[number],
 
   /** Checklist field: how good the feed is */
-  field_feed_quantity: DiseaseScale[number],
+  fieldFeedQuantity: DiseaseScale[number],
 
   /** Checklist field: whether chickens are getting enough light */
-  field_light_sufficiency: DiseaseScale[number],
+  fieldLightSufficiency: DiseaseScale[number],
 
   /** Checklist field: whether the chicken pens are well ventilated */
-  field_ventillation: DiseaseScale[number],
+  fieldVentillation: DiseaseScale[number],
 
   /** Checklist field: how clean the water is */
-  field_water_cleanliness: DiseaseScale[number]
+  fieldWaterCleanliness: DiseaseScale[number]
 }
 
 /**
- * The node--farmer-journal type
+ * The node--farmer_daily_journal type
  */
+export type FarmerJournal = Node & {
+  /** The number of chickens that are alive */
+  fieldClosingStock: number|null,
+
+  /** The number of damaged eggs */
+  fieldDamagedEggs: number|null,
+
+  /** The percentage of eggs that are damaged */
+  fieldDamagedEggsPercentage_: number|null,
+
+  /** The total number of eggs produced */
+  fieldEggsProduced: number|null,
+
+  /** The number of large eggs */
+  fieldLargeEggs: number|null,
+
+  /** The number of medium eggs */
+  fieldMediumEggs: number|null,
+
+  /** The number of small eggs */
+  fieldSmallEggs: number|null,
+
+  /** The amoung of feed given to the birds (in "bags")
+   * FIXME: this should be in kgs later on
+   */
+  fieldGivenFeed: number|null,
+  fieldGramsPerBird: number|null,
+
+  /** The industry standard of grams per bird. A relatively static variable */
+  fieldGramPerBirdIndustrySta: number|null,
+
+  fieldHoursOfLight: number|null,
+  fieldInitialStock: number|null,
+  fieldLayFrequency: number|null,
+  fieldLayFrequencyIndustrySta: number|null,
+  fieldMortality: number|null,
+  fieldMortalityPercentage_: number|null,
+  fieldMortalityProlapse_: number|null,
+  fieldTotalMortality: number|null,
+  fieldWeightOfBird: number|null
+}
