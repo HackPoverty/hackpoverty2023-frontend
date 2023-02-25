@@ -31,45 +31,46 @@ export type DiseaseScale = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  * The `node--technician_visit` type
  */
 export type TechnicianVisit = Node & {
-  fieldVisitComments: null,
+  fieldVisitComments: string | null;
 
   /** GPS coordinates of where the visit was taken */
-  fieldGpsCoordinates: GPSCoordinates|null,
+  fieldGpsCoordinates: GPSCoordinates | null;
 
   /** The likelihood of the presence of a disease */
-  fieldDisease: PresenceOfDisease[number],
+  fieldDisease: PresenceOfDisease[number];
 
   /** Common disease names */
-  fieldDiseaseNames: string|null,
+  fieldDiseaseNames: string|null;
 
   /** An other field in case disease is not among common options */
-  fieldOtherpossibledisease: string|null,
+  fieldOtherpossibledisease: string|null;
 
 
   /** Whether a vaccine was given or not */
-  fieldVaccineGiven: boolean,
+  fieldVaccineGiven: boolean;
 
   /** Common vaccines that were administered */
-  fieldVaccinations: string[],
+  fieldVaccinations: string[];
 
   /** List the name of a vaccine that is not among the previous options */
-  fieldOtherVaccine: string|null,
+  fieldOtherVaccine: string|null;
 
 
   /** Checklist field: how clean the bedding is */
-  fieldCleanBedding: DiseaseScale[number],
+  fieldCleanBedding: DiseaseScale[number];
 
   /** Checklist field: how good the feed is */
-  fieldFeedQuantity: DiseaseScale[number],
+  fieldFeedQuantity: DiseaseScale[number];
 
   /** Checklist field: whether chickens are getting enough light */
-  fieldLightSufficiency: DiseaseScale[number],
+  fieldLightSufficiency: DiseaseScale[number];
 
   /** Checklist field: whether the chicken pens are well ventilated */
-  fieldVentillation: DiseaseScale[number],
+  fieldVentillation: DiseaseScale[number];
 
   /** Checklist field: how clean the water is */
-  fieldWaterCleanliness: DiseaseScale[number]
+  fieldWaterCleanliness: DiseaseScale[number];
+
 }
 
 /**
