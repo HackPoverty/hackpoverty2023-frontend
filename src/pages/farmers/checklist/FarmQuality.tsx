@@ -1,20 +1,13 @@
-import { RadioOptions } from "@/components/farmers/RadioOptions";
-import { IonInput, IonLabel } from "@ionic/react";
-import { t } from "i18next";
-import { useFormContext } from "react-hook-form";
-import { FarmRecord, QualityTypes } from ".";
+import { SingleChoice } from "@/components/farmers/SingleChoice";
+import { getQualityName, QUALITY_SCALES } from "src/types/contentTypes";
 
 export const FarmQuality = () => {
-  const { register } = useFormContext<FarmRecord>()
+  const options = [...QUALITY_SCALES]
   return <>
-    <RadioOptions label="Light Quality" options={QualityTypes} name="quality.light" />
-    <RadioOptions label="Feed Quality" options={QualityTypes} name="quality.feed" />
-    <RadioOptions label="Water Quality" options={QualityTypes} name="quality.water" />
-    <RadioOptions label="Bedding Quality" options={QualityTypes} name="quality.bedding" />
-    <RadioOptions label="Ventilation Quality" options={QualityTypes} name="quality.ventilation" />
-    <div>
-      <IonLabel position="stacked">{t("note_comments_or_concerns")}</IonLabel>
-      <IonInput {...register("quality.note")} />
-    </div>
+    <SingleChoice label="Light Sufficiency" name="fieldLightSufficiency" options={options} displayFn={getQualityName} />
+    <SingleChoice label="Feed Quantity" name="fieldFeedQuantity" options={options} displayFn={getQualityName} />
+    <SingleChoice label="Water Cleanliness" name="fieldWaterCleanliness" options={options} displayFn={getQualityName} />
+    <SingleChoice label="Clean Bedding" name="fieldCleanBedding" options={options} displayFn={getQualityName} />
+    <SingleChoice label="Ventilation" name="fieldVentillation" options={options} displayFn={getQualityName} />
   </>
 };

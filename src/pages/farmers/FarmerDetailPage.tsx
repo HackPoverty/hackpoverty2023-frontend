@@ -23,8 +23,8 @@ export const FarmerDetailPage = () => {
   const { farmer_id } = useParams<{ farmer_id: string }>()
   const [farmer, pastVisits] = useQueries({
     queries: [
-      { queryKey: ["farmer", farmer_id], queryFn: async () => await getFarmerById(farmer_id) },
-      { queryKey: ["technicalVisits", farmer_id], queryFn: async () => await getTechnicianVisits(farmer_id) },
+      { queryKey: ["farmer", farmer_id], queryFn: () => getFarmerById(farmer_id) },
+      { queryKey: ["technicalVisits", farmer_id], queryFn: () => getTechnicianVisits(farmer_id) },
     ],
   })
   return (
