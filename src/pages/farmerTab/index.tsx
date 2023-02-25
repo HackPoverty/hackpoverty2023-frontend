@@ -1,2 +1,2 @@
-export { FarmerDashboard } from "./FarmerDashboard"
+export { FarmerDashboard } from "./farmerDashboard"
 export { FarmerJournal } from "./farmerJournal"
