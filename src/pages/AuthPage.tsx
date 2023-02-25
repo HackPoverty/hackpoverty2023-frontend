@@ -1,6 +1,7 @@
 import {
   IonButton,
   IonContent,
+  IonIcon,
   IonInput,
   IonItem,
   IonLabel,
@@ -11,6 +12,8 @@ import {
 import { useMutation } from "@tanstack/react-query"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { LoginData, useAuth } from "src/auth"
+import { logoIonic, logoJavascript } from 'ionicons/icons';
+
 import "./AuthPage.css"
 
 export const AuthPage = () => {
@@ -23,7 +26,22 @@ export const AuthPage = () => {
   return (
     <IonPage>
       <IonContent>
-        <form
+
+      <div className="log">
+          
+
+          {/* <IonIcon name="logo-javascript"></IonIcon> */}
+          {/* <IonIcon icon={logoJavascript} size="large"></IonIcon> */}
+          
+              <div className="logoIMG">
+                <img src="/public/assets/ui/logo.svg"  />
+                <h2 className="logotitle ion-margin-top">ovoflow</h2>
+              </div>
+
+          <div className='buttons'>
+            <div className="funcions ion-padding-horizontal">
+
+            <form
           className="login-form ion-padding"
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -47,6 +65,11 @@ export const AuthPage = () => {
           </IonButton>
           <IonLoading message="Logging in..." isOpen={isLoading} />
         </form>
+
+            </div>
+          </div>
+        </div>
+
       </IonContent>
     </IonPage>
   )

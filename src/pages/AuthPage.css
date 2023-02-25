@@ -6,3 +6,44 @@
   align-items: stretch;
   gap: 1rem;
 }
+
+ion-content{
+  --background: #516092 !important;
+  --background: url(/public/assets/ui/bg.svg) no-repeat center center / cover !important;
+
+}
+
+ion-item, ion-buttom {border-radius: 20px;}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100vh;
+  text-align: center;
+}
+.log .buttons {
+  text-align: center;
+  width: calc(100% - 20px);
+}
+.log .buttons .funcions {
+  position: absolute;
+  width: 100%;
+  bottom: 16px;
+}
+
+
+
+
+.logoIMG {
+  width: 100%;
+  text-align: center;
+}
+
+.logoIMG img {
+  max-width: 87px;
+}
+
+h2.logotitle {
+  color: var(--ion-color-light);
+}

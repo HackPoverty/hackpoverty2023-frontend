@@ -1,3 +1,41 @@
+
+@font-face {
+  font-family: 'PoppinsSemiBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/public/font/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsRegular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/public/font/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsMedium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/public/font/Poppins-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/public/font/Poppins-Bold.ttf');
+}
+
+* {
+  font-family: PoppinsRegular !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: PoppinsSemiBold !important;
+}
+
 ion-content {
   --background: #dedede ;
 }
+
