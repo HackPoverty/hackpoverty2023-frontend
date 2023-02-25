@@ -27,11 +27,11 @@ export const AuthPage = () => {
       <IonContent>
       <IonButton onClick={() => {
            i18n.changeLanguage('pt');
-         }}>Portugues</IonButton>
+         }}>Português</IonButton>
 
          <IonButton onClick={() => {
            i18n.changeLanguage('en');
-         }}>Ingles</IonButton>
+         }}>English</IonButton>
         <form
           className="login-form ion-padding"
           onSubmit={handleSubmit(onSubmit)}

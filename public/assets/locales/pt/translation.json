@@ -13,5 +13,14 @@
   "login": "Entrar",
   "dashboard": "Painel de Controlo",
   "farmer_dashboard": "Painel de Controlo do Productor",
-  "complete_log": "Por favor, completa as actividades diárias"
+  "complete_log": "Por favor, completa as actividades diárias",
+  "last_visit_was":  "A última visita foi a",
+  "ago":"atrás",
+  "logout": "Terminar sessão",
+  "menu": "Menu",
+  "notes_and_concerns_for_admins_or_technicians": "Notas e preocupações para administradores ou técnicos",
+  "back": "Voltar",
+  "next": "Próximo",
+  "submit": "Enviar",
+  "confirm_your_submission":"Confirmar seu envio"
 }
