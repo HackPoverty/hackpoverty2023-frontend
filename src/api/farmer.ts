@@ -1,12 +1,13 @@
 import { serialize, CaseType } from "jsonapi-fractal"
 import { jsonApi, jsonDeserialize } from "."
 import { FarmerJournal } from "src/types/contentTypes"
+import { Node } from "src/types/highLevelTypes"
 
 export const getFarmerJournalLogs = async (uid: string) => {
   const reponse = await jsonApi.get(
     `node/farmer_daily_journal?filter[uid.meta.drupal_internal__target_id]=${uid}`
   )
-  return jsonDeserialize<FarmerJournal[]>(reponse.data)
+  return jsonDeserialize<Node<FarmerJournal>[]>(reponse.data)
 }
 
 export const postFarmerJournal = async (journal: PostFarmerJournalInputs) => {
@@ -23,7 +24,4 @@ export const postFarmerJournal = async (journal: PostFarmerJournalInputs) => {
   )
 }
 
-export type PostFarmerJournalInputs = Omit<
-  FarmerJournal,
-  "id" | "changed" | "created"
->
+export type PostFarmerJournalInputs = Node<FarmerJournal>

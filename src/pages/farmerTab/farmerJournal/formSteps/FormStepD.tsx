@@ -11,6 +11,7 @@ import { useFormContext } from "react-hook-form"
 import { FormStepC } from "./FormStepC"
 import { FormStepE } from "./FormStepE"
 import type { PostFarmerJournalInputs } from "src/api/farmer"
+import { t } from "i18next"
 
 export const FormStepD = () => {
   const { register } = useFormContext<PostFarmerJournalInputs>()
@@ -20,16 +21,16 @@ export const FormStepD = () => {
       <IonList>
         <IonItem>
           <IonLabel position="stacked">
-            Comments for admins or technicians
+            {t("notes_and_concerns_for_admins_or_technicians")}
           </IonLabel>
           <IonInput type="text" {...register("fieldCommentdailycheck")} />
         </IonItem>
       </IonList>
       <IonNavLink routerDirection="back" component={() => <FormStepC />}>
-        <IonButton>BACK</IonButton>
+        <IonButton>{t("back").toUpperCase()}</IonButton>
       </IonNavLink>
       <IonNavLink routerDirection="forward" component={() => <FormStepE />}>
-        <IonButton>NEXT</IonButton>
+        <IonButton>{t("next").toUpperCase()}</IonButton>
       </IonNavLink>
     </IonContent>
   )

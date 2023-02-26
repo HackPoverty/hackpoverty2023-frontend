@@ -1,5 +1,3 @@
-import { Node } from "./highLevelTypes"
-
 /**
  * Geoinformation for a Drupal Geofield
  */
@@ -22,25 +20,73 @@ export type GPSCoordinates = {
 }
 
 /** The possible values for the field_diease field */
-export type PresenceOfDisease = ["Yes", "No", "Possible"]
+export const PresenceOfDisease = ["Yes", "No", "Possible"] as const
 
-/** The possible values for the scale fields */
-export type DiseaseScale = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+/**
+ *  The possible values to rank the farm conditions are from 0 to 10
+ *  However, the record only stores 0, 5, or 10
+ */
+
+export const QUALITY_SCALES = [0, 5, 10] as const
+export type Quality = (typeof QUALITY_SCALES)[number]
+export const getQualityName = (score: Quality) => {
+  if (score === 0) return "Bad"
+  if (score === 5) return "Okay"
+  return "Good"
+}
+
+/**
+ * The values for possible diseases
+ */
+export const DISEASES = [
+  "mareks",
+  "newcastle",
+  "bronchtitis",
+  "laryngotracheitis",
+  "fowl_pox",
+  "fowl_chlorea",
+] as const
+export type Disease = (typeof DISEASES)[number]
+export const DISEASE_MAP = new Map<Disease, string>([
+  ["mareks", "Marek's"],
+  ["newcastle", "New Castle"],
+  ["bronchtitis", "Bronchtitis"],
+  ["laryngotracheitis", "Laryngotracheitis"],
+  ["fowl_pox", "Fowl Pox"],
+  ["fowl_chlorea", "Fowl Cholera"],
+])
+
+/**
+ * The values for possible vaccines
+ */
+export const VACCINES = [
+  "newcastle",
+  "bronchtitis",
+  "fowl_pox",
+  "fowl_chlorea",
+] as const
+export type Vaccine = (typeof VACCINES)[number]
+export const VACCINE_MAP = new Map<Vaccine, string>([
+  ["newcastle", "New Castle"],
+  ["bronchtitis", "Bronchtitis"],
+  ["fowl_pox", "Fowl Pox"],
+  ["fowl_chlorea", "Fowl Cholera"],
+])
 
 /**
  * The `node--technician_visit` type
  */
-export type TechnicianVisit = Node & {
-  fieldVisitComments: null
+export type TechnicianVisit = {
+  fieldVisitComments: string | null
 
   /** GPS coordinates of where the visit was taken */
   fieldGpsCoordinates: GPSCoordinates | null
 
   /** The likelihood of the presence of a disease */
-  fieldDisease: PresenceOfDisease[number]
+  fieldDisease: (typeof PresenceOfDisease)[number]
 
   /** Common disease names */
-  fieldDiseaseNames: string | null
+  fieldDiseaseNames: Disease[]
 
   /** An other field in case disease is not among common options */
   fieldOtherpossibledisease: string | null
@@ -49,31 +95,31 @@ export type TechnicianVisit = Node & {
   fieldVaccineGiven: boolean
 
   /** Common vaccines that were administered */
-  fieldVaccinations: string[]
+  fieldVaccinations: Vaccine[]
 
   /** List the name of a vaccine that is not among the previous options */
   fieldOtherVaccine: string | null
 
   /** Checklist field: how clean the bedding is */
-  fieldCleanBedding: DiseaseScale[number]
+  fieldCleanBedding: Quality
 
   /** Checklist field: how good the feed is */
-  fieldFeedQuantity: DiseaseScale[number]
+  fieldFeedQuantity: Quality
 
   /** Checklist field: whether chickens are getting enough light */
-  fieldLightSufficiency: DiseaseScale[number]
+  fieldLightSufficiency: Quality
 
   /** Checklist field: whether the chicken pens are well ventilated */
-  fieldVentillation: DiseaseScale[number]
+  fieldVentillation: Quality
 
   /** Checklist field: how clean the water is */
-  fieldWaterCleanliness: DiseaseScale[number]
+  fieldWaterCleanliness: Quality
 }
 
 /**
  * The node--farmer_daily_journal type
  */
-export type FarmerJournal = Node & {
+export type FarmerJournal = {
   /** The number of chickens that are alive */
   fieldClosingStock: number | null
 

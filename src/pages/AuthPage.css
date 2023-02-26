@@ -1,3 +1,10 @@
+.fancy-background {
+  --background: #516092;
+  --background: url(/assets/ui/bg.svg) no-repeat center center / cover;
+}
+
+ion-item {  border-radius: var(--custom-box-radius);  }
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -5,4 +12,35 @@
   justify-content: center;
   align-items: stretch;
   gap: 1rem;
+}
+
+.authentication-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100vh;
+  text-align: center;
+  margin: 0;
+}
+
+.buttons {
+  text-align: center;
+  width: calc(100% - 20px);
+}
+
+/**
+ * Logo Styles
+ */
+.logo {
+  width: 100%;
+  text-align: center;
+}
+
+.logo__img {
+  max-width: 117px;
+  max-height: calc(100vh - 23em);
+}
+
+.logo__title {
+  color: var(--ion-color-light);
 }

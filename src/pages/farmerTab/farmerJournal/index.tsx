@@ -16,8 +16,10 @@ import { FormStepA } from "@/pages/farmerTab/farmerJournal/formSteps/FormStepA"
 import { useMutation } from "@tanstack/react-query"
 import { postFarmerJournal } from "src/api/farmer"
 import type { PostFarmerJournalInputs } from "src/api/farmer"
+import { useTranslation } from "react-i18next"
 
 export const FarmerJournal = () => {
+  const { t } = useTranslation()
   const modal = useRef<HTMLIonModalElement>(null)
   const methods = useForm<PostFarmerJournalInputs>()
   const { mutate, isSuccess: mutationSuccess } = useMutation(postFarmerJournal)
@@ -38,13 +40,13 @@ export const FarmerJournal = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/farmer-dashboard" />
           </IonButtons>
-          <IonTitle>Farmer Journal</IonTitle>
+          <IonTitle>{t("farmer_journal")}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent className="ion-padding">
         <IonButton id="open-modal" expand="block">
-          Record Data
+          {t("record_data")}
         </IonButton>
 
         <IonModal ref={modal} trigger="open-modal">
@@ -52,10 +54,10 @@ export const FarmerJournal = () => {
             <IonToolbar>
               <IonButtons slot="start">
                 <IonButton onClick={() => modal.current?.dismiss()}>
-                  Cancel
+                  {t("cancel")}
                 </IonButton>
               </IonButtons>
-              <IonTitle>Journal For [DATE]</IonTitle>
+              <IonTitle>{t("journal_of")} [DATE]</IonTitle>
             </IonToolbar>
           </IonHeader>
           <IonContent className="ion-padding">

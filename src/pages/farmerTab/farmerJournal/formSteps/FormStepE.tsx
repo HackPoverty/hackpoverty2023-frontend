@@ -9,6 +9,7 @@ import {
 import { useFormContext } from "react-hook-form"
 import type { PostFarmerJournalInputs } from "src/api/farmer"
 import { FormStepD } from "./FormStepD"
+import { t } from "i18next"
 
 export const FormStepE = () => {
   const { watch } = useFormContext<PostFarmerJournalInputs>()
@@ -17,7 +18,7 @@ export const FormStepE = () => {
   return (
     <IonContent className="page">
       <IonList>
-        <IonListHeader>Confirm your submission</IonListHeader>
+        <IonListHeader>{t("confirm_your_submission")}</IonListHeader>
         {Object.keys(watchAllFields).map((key) => (
           <IonItem key={key}>
             {key}: {watchAllFields[key as keyof typeof watchAllFields]}
@@ -25,9 +26,9 @@ export const FormStepE = () => {
         ))}
       </IonList>
       <IonNavLink routerDirection="back" component={() => <FormStepD />}>
-        <IonButton>BACK</IonButton>
+        <IonButton>{t("back").toUpperCase()}</IonButton>
       </IonNavLink>
-      <IonButton type="submit">Submit</IonButton>
+      <IonButton type="submit">{t("submit")}</IonButton>
     </IonContent>
   )
 }
