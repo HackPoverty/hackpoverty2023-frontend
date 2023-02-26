@@ -2,6 +2,7 @@ import {
   IonButton,
   IonContent,
   IonHeader,
+  IonIcon,
   IonItem,
   IonLabel,
   IonList,
@@ -13,6 +14,8 @@ import {
 } from "@ionic/react"
 import { IonReactRouter } from "@ionic/react-router"
 import { Redirect } from "react-router"
+
+import { logoWhatsapp } from "ionicons/icons"
 
 import { FarmerDashboard, FarmerJournal } from "@/pages/farmerTab"
 import { AuthPage } from "@/pages/AuthPage"
@@ -43,10 +46,33 @@ export const RootNavigator = () => {
           <IonList>
             <IonMenuToggle>
               <UserMenu role={auth.user?.role} />
-              <IonItem>
-                <IonButton onClick={handleLogout}>{t("logout")}</IonButton>
-              </IonItem>
             </IonMenuToggle>
+            {auth.user?.role === "FARMER" ? (
+              <IonItem lines="none">
+                <IonMenuToggle>
+                  <IonButton
+                    href="https://wa.me/?text=Hi%2C%20please%20visit%20my%20farm.%20My%20chickens%20are%20sick.%20"
+                    size="default"
+                    color="success"
+                  >
+                    <IonIcon slot="start" icon={logoWhatsapp} />
+                    WhatsApp Technician
+                  </IonButton>
+                </IonMenuToggle>
+              </IonItem>
+            ) : undefined}
+            <IonItem>
+              <IonMenuToggle>
+                <IonButton
+                  onClick={handleLogout}
+                  color="danger"
+                  size="default"
+                  fill="clear"
+                >
+                  {t("logout")}
+                </IonButton>
+              </IonMenuToggle>
+            </IonItem>
           </IonList>
         </IonContent>
       </IonMenu>
