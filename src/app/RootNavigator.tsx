@@ -22,23 +22,24 @@ import { AuthPage } from "@/pages/AuthPage"
 import { PublicRoute } from "src/auth/PublicRoute"
 import { PrivateRoute } from "src/auth/PrivateRoute"
 import { FarmChecklist } from "@/pages/farmers/checklist"
-import { FarmRecordComplete } from "@/pages/farmers/checklist/complete"
+import { FarmRecordComplete } from "@/pages/farmers/checklist/FormComplete"
 import { FarmerDetailPage } from "@/pages/farmers/FarmerDetailPage"
 import { FarmersListPage } from "@/pages/farmers/FarmersListPage"
 import { useAuth } from "src/auth"
+import { useTranslation } from "react-i18next"
 
 export const RootNavigator = () => {
   const auth = useAuth()
   const isLoggedOut = auth.user?.role === undefined
   const handleLogout = auth.logout
-
+  const { t } = useTranslation()
   return (
     <IonReactRouter>
       {/* MENU */}
       <IonMenu contentId="main" disabled={isLoggedOut}>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Menu</IonTitle>
+            <IonTitle>{t("menu")}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
@@ -68,7 +69,7 @@ export const RootNavigator = () => {
                   size="default"
                   fill="clear"
                 >
-                  Log out
+                  {t("logout")}
                 </IonButton>
               </IonMenuToggle>
             </IonItem>

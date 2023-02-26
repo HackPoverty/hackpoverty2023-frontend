@@ -13,9 +13,8 @@ export default defineConfig({
     VitePWA({
       manifest,
       includeAssets: [
-        "aseets/icon/favicon.ico",
-        "aseets/icon/apple-touch-icon.png",
-        "aseets/icon/favicon.png",
+        "assets/icon/favicon.ico",
+        "assets/icon/apple-touch-icon.png",
       ],
       devOptions: {
         enabled: true,
