@@ -1,5 +1,15 @@
-import { IonList, IonItem, IonText } from "@ionic/react"
+import {
+  IonList,
+  IonItem,
+  IonText,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonLabel,
+} from "@ionic/react"
 import { useQuery } from "@tanstack/react-query"
+import dayjs from "dayjs"
 import { getFarmerJournalLogs } from "src/api/farmer"
 import { useAuth } from "src/auth"
 
@@ -21,12 +31,23 @@ export const FarmerJournalList = () => {
 
   return (
     // todo: make this pretty
-    <IonList>
-      {data?.map((journalEntry) => (
-        <IonItem key={journalEntry.id} className="ion-margin-bottom">
-          <IonText>{JSON.stringify(journalEntry)}</IonText>
-        </IonItem>
-      ))}
-    </IonList>
+    <IonCard>
+      <IonCardHeader>
+        <IonCardTitle>Past Journal Entries</IonCardTitle>
+      </IonCardHeader>
+      <IonCardContent>
+        <IonList>
+          {data?.map((entry) => (
+            <IonItem key={entry.id} className="ion-margin-bottom">
+              <IonText>
+                Date: {dayjs(entry.created).format("MM ddd, YYYY")}
+                <br />
+                Chickens: {Number(entry.fieldInitialstock) || "Not recorded"}
+              </IonText>
+            </IonItem>
+          ))}
+        </IonList>
+      </IonCardContent>
+    </IonCard>
   )
 }

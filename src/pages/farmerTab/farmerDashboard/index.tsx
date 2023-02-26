@@ -26,7 +26,7 @@ export const FarmerDashboard = () => {
           <IonTitle>{t("farmer_dashboard")}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
+      <IonContent>
         <LanguageSwitcher />
         <FarmerJournalButton />
         <FarmerDataDisplay />
