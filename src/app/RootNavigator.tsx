@@ -27,6 +27,7 @@ import { FarmerDetailPage } from "@/pages/farmers/FarmerDetailPage"
 import { FarmersListPage } from "@/pages/farmers/FarmersListPage"
 import { useAuth } from "src/auth"
 import { useTranslation } from "react-i18next"
+import { TechnicianVisitPage } from "@/pages/TechnicianVisitPage"
 
 export const RootNavigator = () => {
   const auth = useAuth()
@@ -119,6 +120,12 @@ export const RootNavigator = () => {
           exact
           path="/farmers/:farmer_id/checklist/complete"
           component={FarmRecordComplete}
+          appRole="TECHNICIAN"
+        />
+        <PrivateRoute
+          exact
+          path="/technician-visit/:visit_id"
+          component={TechnicianVisitPage}
           appRole="TECHNICIAN"
         />
       </IonRouterOutlet>

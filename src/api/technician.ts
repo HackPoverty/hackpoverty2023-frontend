@@ -13,6 +13,11 @@ type PostTechnicianVisit = {
   visit: TechnicianVisit,
 }
 
+export const getTechnicianVisitById = async (visitId: string) => {
+  const reponse = await jsonApi.get(`node/technician_visit/${visitId}`)
+  return jsonDeserialize<Node<TechnicianVisit>>(reponse.data)
+}
+
 export const postTechnicianVisit = async ({farmerId, visit}: PostTechnicianVisit) => {
   const postdata = {
     ...visit,

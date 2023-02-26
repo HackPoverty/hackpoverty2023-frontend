@@ -7,7 +7,7 @@ interface PastVisitRecordProps {
 }
 
 export const PastVisitRecord = ({ technicianVisit }: PastVisitRecordProps) => {
-  return <IonCard class="ion-no-margin ion-margin-vertical">
+  return <IonCard button routerLink={`/technician-visit/${technicianVisit.id}`} class="ion-no-margin ion-margin-vertical">
     <IonCardContent>
       <p><strong>{technicianVisit.title}</strong></p>
       <p>{new Date(technicianVisit.created).toLocaleDateString("en-us", {
