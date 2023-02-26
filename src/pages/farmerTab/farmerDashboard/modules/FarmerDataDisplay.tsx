@@ -1,7 +1,15 @@
 import { useMemo } from "react"
 import dayjs from "dayjs"
 import { useQuery } from "@tanstack/react-query"
-import { IonItem, IonLabel, IonList } from "@ionic/react"
+import {
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonItem,
+  IonLabel,
+  IonList,
+} from "@ionic/react"
 import { useAuth } from "src/auth"
 import { getFarmerJournalLogs } from "src/api/farmer"
 
@@ -44,19 +52,20 @@ export const FarmerDataDisplay = () => {
     throw `Something went wrong with fetching farmer journal data for user ${farmerId}`
 
   return (
-    <IonList>
-      <IonItem>
-        <IonLabel>Averaged egg count for last 7 days: {eggCount}</IonLabel>
-      </IonItem>
-      <IonLabel>
-        <IonItem>
+    <IonCard>
+      <IonCardHeader>
+        <IonCardTitle>Data Summary</IonCardTitle>
+      </IonCardHeader>
+      <IonCardContent>
+        <IonLabel>Average of {eggCount} eggs</IonLabel>
+        <br />
+        <IonLabel>
           <>
-            Chicken count for last entry date{" "}
-            {dayjs(lastEntryDate).format("MMM DD, YYYY")}:{" "}
-            {lastEntryChickenCount}
+            Recorded {lastEntryChickenCount} chickens on{" "}
+            {dayjs(lastEntryDate).format("MMM DD, YYYY")}
           </>
-        </IonItem>
-      </IonLabel>
-    </IonList>
+        </IonLabel>
+      </IonCardContent>
+    </IonCard>
   )
 }

@@ -1,4 +1,12 @@
-import { IonText, IonButton, IonLabel } from "@ionic/react"
+import {
+  IonText,
+  IonButton,
+  IonLabel,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+} from "@ionic/react"
 import { useQuery } from "@tanstack/react-query"
 import dayjs from "dayjs"
 import { t } from "i18next"
@@ -26,17 +34,21 @@ export const FarmerJournalButton = () => {
     throw `Something went wrong with fetching farmer journal data for user ${farmerId}`
 
   return (
-    <>
-      <IonText>
-        <h2>{t("complete_log")}</h2>
-      </IonText>
-      <IonButton
-        routerLink="/farmer-journal"
-        expand="block"
-        disabled={lastEntryDateIsToday}
-      >
-        <IonLabel>{t("complete_log_button")}</IonLabel>
-      </IonButton>
-    </>
+    <IonCard>
+      <IonCardHeader>
+        <IonCardTitle>
+          {lastEntryDateIsToday ? t("farmer_log_completed") : t("complete_log")}
+        </IonCardTitle>
+      </IonCardHeader>
+      <IonCardContent>
+        <IonButton
+          routerLink="/farmer-journal"
+          expand="block"
+          disabled={lastEntryDateIsToday}
+        >
+          <IonLabel>{t("complete_log_button")}</IonLabel>
+        </IonButton>
+      </IonCardContent>
+    </IonCard>
   )
 }
