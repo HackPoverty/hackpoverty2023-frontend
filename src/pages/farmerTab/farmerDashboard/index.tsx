@@ -5,18 +5,17 @@ import {
   IonMenuButton,
   IonTitle,
   IonContent,
-  IonLabel,
   IonPage,
-  IonButton,
-  IonText,
 } from "@ionic/react"
 import { useTranslation } from "react-i18next"
 import { FarmerJournalList } from "@/pages/farmerTab/farmerDashboard/modules/FarmerJournalList"
 import { FarmerDataDisplay } from "@/pages/farmerTab/farmerDashboard/modules/FarmerDataDisplay"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
+import { FarmerJournalButton } from "./modules/FarmerJournalButton"
 
 export const FarmerDashboard = () => {
   const { t } = useTranslation()
+
   return (
     <IonPage>
       <IonHeader>
@@ -29,12 +28,7 @@ export const FarmerDashboard = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <LanguageSwitcher />
-        <IonText>
-          <h2>{t("complete_log")}</h2>
-        </IonText>
-        <IonButton routerLink="/farmer-journal" expand="block">
-          <IonLabel>{t("complete_log_button")}</IonLabel>
-        </IonButton>
+        <FarmerJournalButton />
         <FarmerDataDisplay />
         <FarmerJournalList />
       </IonContent>
