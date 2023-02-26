@@ -43,16 +43,19 @@ export const AuthPage = () => {
                 onSubmit={handleSubmit(onSubmit)}
               >
                 <IonItem fill="outline">
-                  <IonLabel position="stacked">{t("username")}</IonLabel>
-                  <IonInput {...register("username")} required></IonInput>
+                  <IonInput
+                    {...register("username")}
+                    required
+                    placeholder={t("username") as string}
+                  />
                 </IonItem>
                 <IonItem fill="outline">
-                  <IonLabel position="stacked">{t("password")}</IonLabel>
                   <IonInput
                     type="password"
                     {...register("password")}
                     required
-                  ></IonInput>
+                    placeholder={t("password") as string}
+                  />
                 </IonItem>
                 {error ? (
                   <IonNote color="danger">{t("wrong_password")}</IonNote>

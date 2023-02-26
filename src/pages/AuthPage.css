@@ -3,7 +3,9 @@
   --background: url(/assets/ui/bg.svg) no-repeat center center / cover;
 }
 
-ion-item {  border-radius: var(--custom-box-radius);  }
+ion-item {
+  border-radius: var(--custom-box-radius);
+}
 
 .login-form {
   display: flex;

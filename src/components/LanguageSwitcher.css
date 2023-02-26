@@ -1,8 +1,7 @@
 /**
  * Language Switcher
  */
- .language-switcher {
-  font-size: 0.85em;
-  line-height: 2.5rem;
-  --background: #eee;
- }
+.language-switcher {
+  max-width: 500px;
+  margin: auto;
+}

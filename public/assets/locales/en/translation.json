@@ -9,7 +9,7 @@
   "chicken_name": "Chicken Name",
   "username": "Username",
   "password": "Password",
-  "change_language": "Change Language",
+  "change_language": "Language",
   "logging_in": "Logging in...",
   "wrong_password": "Wrong password, please try again",
   "login": "login",
