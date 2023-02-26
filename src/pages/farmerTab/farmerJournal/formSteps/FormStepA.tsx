@@ -23,7 +23,7 @@ export const FormStepA = () => {
         <IonListHeader>{t("chickens")}</IonListHeader>
         <IonItem>
           <IonLabel position="stacked">{t("initial_stock")}</IonLabel>
-          <IonInput type="number" {...register("fieldInitialStock")} />
+          <IonInput type="number" {...register("fieldInitialstock")} />
         </IonItem>
         <IonItem>
           <IonLabel position="stacked">

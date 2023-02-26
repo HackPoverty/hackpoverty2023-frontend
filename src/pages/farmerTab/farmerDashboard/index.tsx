@@ -12,6 +12,7 @@ import {
 } from "@ionic/react"
 import { useTranslation } from "react-i18next"
 import { FarmerJournalList } from "@/pages/farmerTab/farmerDashboard/modules/FarmerJournalList"
+import { FarmerDataDisplay } from "@/pages/farmerTab/farmerDashboard/modules/FarmerDataDisplay"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 
 export const FarmerDashboard = () => {
@@ -34,6 +35,7 @@ export const FarmerDashboard = () => {
         <IonButton routerLink="/farmer-journal" expand="block">
           <IonLabel>{t("complete_log_button")}</IonLabel>
         </IonButton>
+        <FarmerDataDisplay />
         <FarmerJournalList />
       </IonContent>
     </IonPage>

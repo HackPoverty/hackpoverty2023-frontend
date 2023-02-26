@@ -151,7 +151,7 @@ export type FarmerJournal = {
   fieldGramPerBirdIndustrySta: number | null
 
   fieldHoursOfLight: number | null
-  fieldInitialStock: number | null
+  fieldInitialstock: number | null
   fieldLayFrequency: number | null
   fieldLayFrequencyIndustrySta: number | null
   fieldMortality: number | null
