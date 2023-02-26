@@ -1,4 +1,5 @@
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
+import { t } from "i18next";
 import { useHistory, useParams } from "react-router";
 import "./FormComplete.css";
 
@@ -14,10 +15,10 @@ export const FarmRecordComplete = () => {
     <IonContent fullscreen>
       <div className="ion-padding complete-wrapper">
         <div className="complete-content">
-          Record is complete today
+          {t('record_is_complete_today')}
         </div>
         <div>
-          <IonButton expand="block" fill="clear" class="ion-text-uppercase">Contact admin or farmer</IonButton>
+          <IonButton expand="block" fill="clear" class="ion-text-uppercase">{t("contact_admin_or_farmer")}</IonButton>
           <IonButton expand="block" class="ion-text-uppercase" onClick={() => history.replace(`/farmers/${params.farmer_id}`)}>Done</IonButton>
         </div>
       </div>

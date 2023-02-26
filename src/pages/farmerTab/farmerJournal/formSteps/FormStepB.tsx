@@ -8,38 +8,40 @@ import {
   IonNavLink,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { FarmerJournalFormInputs } from ".."
 import { FormStepA } from "./FormStepA"
 import { FormStepC } from "./FormStepC"
 
 export const FormStepB = () => {
+  const { t } = useTranslation();
   const { register } = useFormContext<FarmerJournalFormInputs>()
 
   return (
     <IonContent className="page">
       <IonList>
         <IonItem>
-          <IonLabel position="stacked">Large Eggs Produced</IonLabel>
+          <IonLabel position="stacked">{t('large_eggs_produced')}</IonLabel>
           <IonInput type="number" {...register("largeEggsCount")} />
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">Medium Eggs Produced</IonLabel>
+          <IonLabel position="stacked">{t('medium_eggs_produced')}</IonLabel>
           <IonInput type="number" {...register("mediumEggsCount")} />
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">Small Eggs Produced</IonLabel>
+          <IonLabel position="stacked">{t('small_eggs_produced')}</IonLabel>
           <IonInput type="number" {...register("smallEggsCount")} />
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">Number of Damaged Eggs</IonLabel>
+          <IonLabel position="stacked">{t('number_of_damage_eggs')}</IonLabel>
           <IonInput type="number" {...register("damagedEggsCount")} />
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">Lay Frequency</IonLabel>
+          <IonLabel position="stacked">{t('lay_frequency')}</IonLabel>
           <IonInput type="number" {...register("layFrequency")} />
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">Industry Standard</IonLabel>
+          <IonLabel position="stacked">{t('industry_standard')}</IonLabel>
           <IonInput
             type="number"
             {...register("layFrequencyIndustryStandard")}
@@ -47,10 +49,10 @@ export const FormStepB = () => {
         </IonItem>
       </IonList>
       <IonNavLink routerDirection="back" component={() => <FormStepA />}>
-        <IonButton>BACK</IonButton>
+        <IonButton>{t('back')}</IonButton>
       </IonNavLink>
       <IonNavLink routerDirection="forward" component={() => <FormStepC />}>
-        <IonButton>NEXT</IonButton>
+        <IonButton>{t("next")}</IonButton>
       </IonNavLink>
     </IonContent>
   )

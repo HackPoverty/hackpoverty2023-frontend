@@ -12,6 +12,7 @@ import {
 import { useQueries } from "@tanstack/react-query"
 import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
+import { t } from "i18next"
 import { useParams } from "react-router"
 import { getTechnicianVisits } from "src/api/technician"
 import { getFarmerById } from "src/api/users"
@@ -33,7 +34,7 @@ export const FarmerDetailPage = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/farmers" />
           </IonButtons>
-          <IonTitle>Farmer Dashboard</IonTitle>
+          <IonTitle>{t('farmer_dashboard')}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="ion-padding">
