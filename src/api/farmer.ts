@@ -10,6 +10,13 @@ export const getFarmerJournalLogs = async (uid: string) => {
   return jsonDeserialize<Node<FarmerJournal>[]>(reponse.data)
 }
 
+export const getFarmerJounalLogsById = async (farmer_id: string) => {
+  const reponse = await jsonApi.get(
+    `node/farmer_daily_journal?filter[uid.id]=${farmer_id}`
+  )
+  return jsonDeserialize<Node<FarmerJournal>[]>(reponse.data)
+}
+
 export const postFarmerJournal = async (journal: PostFarmerJournalInputs) => {
   return jsonApi.post(
     `node/farmer_daily_journal`,

@@ -4,13 +4,24 @@ import { Node } from "src/types/highLevelTypes"
 import { jsonApi, jsonDeserialize } from "."
 
 export const getTechnicianVisits = async (farmerId: string) => {
-  const reponse = await jsonApi.get(`node/technician_visit?filter[field_for_farmer.id]=${farmerId}`)
+  const reponse = await jsonApi.get(`node/technician_visit`, {
+    params: {
+      "filter[field_for_farmer.id]" :farmerId,
+      "page[limit]": 14,
+      "sort": "-created", 
+    },
+  })
   return jsonDeserialize<Node<TechnicianVisit>[]>(reponse.data)
 }
 
 type PostTechnicianVisit = {
   farmerId: string,
   visit: TechnicianVisit,
+}
+
+export const getTechnicianVisitById = async (visitId: string) => {
+  const reponse = await jsonApi.get(`node/technician_visit/${visitId}`)
+  return jsonDeserialize<Node<TechnicianVisit>>(reponse.data)
 }
 
 export const postTechnicianVisit = async ({farmerId, visit}: PostTechnicianVisit) => {
