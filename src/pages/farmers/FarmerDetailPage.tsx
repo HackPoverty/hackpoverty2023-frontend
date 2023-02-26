@@ -7,7 +7,7 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/react"
 import { useQueries, useQuery } from "@tanstack/react-query"
 import dayjs from "dayjs"
