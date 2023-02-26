@@ -1,19 +1,20 @@
 import {
-  IonList,
-  IonItem,
   IonText,
+  IonButton,
+  IonLabel,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
-  IonLabel,
 } from "@ionic/react"
 import { useQuery } from "@tanstack/react-query"
 import dayjs from "dayjs"
+import { t } from "i18next"
+import React from "react"
 import { getFarmerJournalLogs } from "src/api/farmer"
 import { useAuth } from "src/auth"
 
-export const FarmerJournalList = () => {
+export const FarmerJournalButton = () => {
   const auth = useAuth()
   const farmerId = auth.user?.uid
 
@@ -25,28 +26,28 @@ export const FarmerJournalList = () => {
     }
   )
 
+  const lastEntry = data?.slice(-1).pop()
+  const lastEntryDateIsToday = dayjs().isSame(dayjs(lastEntry?.created), "day")
+
   if (isLoading) return null
   if (error)
     throw `Something went wrong with fetching farmer journal data for user ${farmerId}`
 
   return (
-    // todo: make this pretty
     <IonCard>
       <IonCardHeader>
-        <IonCardTitle>Past Journal Entries</IonCardTitle>
+        <IonCardTitle>
+          {lastEntryDateIsToday ? t("farmer_log_completed") : t("complete_log")}
+        </IonCardTitle>
       </IonCardHeader>
       <IonCardContent>
-        <IonList>
-          {data?.map((entry) => (
-            <IonItem key={entry.id} className="ion-margin-bottom">
-              <IonText>
-                Date: {dayjs(entry.created).format("MM ddd, YYYY")}
-                <br />
-                Chickens: {Number(entry.fieldInitialstock) || "Not recorded"}
-              </IonText>
-            </IonItem>
-          ))}
-        </IonList>
+        <IonButton
+          routerLink="/farmer-journal"
+          expand="block"
+          disabled={lastEntryDateIsToday}
+        >
+          <IonLabel>{t("complete_log_button")}</IonLabel>
+        </IonButton>
       </IonCardContent>
     </IonCard>
   )

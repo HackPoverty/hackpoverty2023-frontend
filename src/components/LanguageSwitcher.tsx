@@ -1,28 +1,45 @@
 import {
   IonButton,
-  IonItem,
-  IonNote,
+  IonCard,
+  IonCol,
+  IonGrid,
+  IonRow,
   IonText,
 } from "@ionic/react"
 import { useTranslation } from "react-i18next"
 import "./LanguageSwitcher.css"
 
 export const LanguageSwitcher = () => {
-  const { t, i18n } = useTranslation();
-  return (    
-    <IonItem class="language-switcher">
-      <IonNote style={{ marginRight: 'auto' }}>
-        <IonText>{t('change_language')}</IonText> &nbsp;
-      </IonNote>
-
-      {/* TODO: Make the current language be fill="solid" */}
-      <IonButton fill="outline" onClick={() => {
-        i18n.changeLanguage('pt');
-      }}>Português</IonButton>
-
-      <IonButton fill="outline" onClick={() => {
-        i18n.changeLanguage('en');
-      }}>English</IonButton>
-    </IonItem>
+  const { t, i18n } = useTranslation()
+  return (
+    <IonCard>
+      <IonGrid className="language-switcher">
+        <IonRow className="ion-justify-content-between ion-align-items-center">
+          <IonCol>
+            <IonText>{t("change_language")}</IonText>
+          </IonCol>
+          <IonCol className="ion-text-right">
+            <IonButton
+              fill={i18n.language === "pt" ? "solid" : "outline"}
+              onClick={() => {
+                i18n.changeLanguage("pt")
+              }}
+              size="small"
+            >
+              Português
+            </IonButton>
+            <IonButton
+              fill={i18n.language === "en" ? "solid" : "outline"}
+              onClick={() => {
+                i18n.changeLanguage("en")
+              }}
+              size="small"
+            >
+              English
+            </IonButton>
+          </IonCol>
+        </IonRow>
+      </IonGrid>
+    </IonCard>
   )
 }
