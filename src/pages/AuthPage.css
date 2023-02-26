@@ -44,12 +44,3 @@ ion-item {  border-radius: var(--custom-box-radius);  }
 .logo__title {
   color: var(--ion-color-light);
 }
-
-/**
- * Language Switcher
- */
- .language-switcher {
-  font-size: 0.85em;
-  line-height: 2.5rem;
-  --background: #eee;
- }

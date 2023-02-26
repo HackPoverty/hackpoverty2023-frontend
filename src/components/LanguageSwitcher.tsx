@@ -5,6 +5,7 @@ import {
   IonText,
 } from "@ionic/react"
 import { useTranslation } from "react-i18next"
+import "./LanguageSwitcher.css"
 
 export const LanguageSwitcher = () => {
   const { t, i18n } = useTranslation();
