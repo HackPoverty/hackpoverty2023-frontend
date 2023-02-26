@@ -8,13 +8,13 @@ import {
   IonNavLink,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
-import { FarmerJournalFormInputs } from ".."
 import { FormStepC } from "./FormStepC"
 import { FormStepE } from "./FormStepE"
+import type { PostFarmerJournalInputs } from "src/api/farmer"
 import { t } from "i18next"
 
 export const FormStepD = () => {
-  const { register } = useFormContext<FarmerJournalFormInputs>()
+  const { register } = useFormContext<PostFarmerJournalInputs>()
 
   return (
     <IonContent className="page">
@@ -23,7 +23,7 @@ export const FormStepD = () => {
           <IonLabel position="stacked">
             {t("notes_and_concerns_for_admins_or_technicians")}
           </IonLabel>
-          <IonInput type="text" {...register("otherNotes")} />
+          <IonInput type="text" {...register("fieldCommentdailycheck")} />
         </IonItem>
       </IonList>
       <IonNavLink routerDirection="back" component={() => <FormStepC />}>

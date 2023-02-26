@@ -7,12 +7,12 @@ import {
   IonContent,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
-import { FarmerJournalFormInputs } from ".."
+import type { PostFarmerJournalInputs } from "src/api/farmer"
 import { FormStepD } from "./FormStepD"
 import { t } from "i18next"
 
 export const FormStepE = () => {
-  const { watch } = useFormContext<FarmerJournalFormInputs>()
+  const { watch } = useFormContext<PostFarmerJournalInputs>()
   const watchAllFields = watch()
 
   return (
@@ -21,7 +21,9 @@ export const FormStepE = () => {
         <IonListHeader>{t("confirm_your_submission")}</IonListHeader>
         {Object.keys(watchAllFields).map((key) => (
           <IonItem key={key}>
-            {key}: {watchAllFields[key as keyof typeof watchAllFields]}
+            <>
+              {key}: {watchAllFields[key as keyof typeof watchAllFields]}
+            </>
           </IonItem>
         ))}
       </IonList>

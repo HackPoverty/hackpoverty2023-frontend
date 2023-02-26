@@ -10,12 +10,12 @@ import {
   IonButton,
   IonText,
 } from "@ionic/react"
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"
 import { FarmerJournalList } from "@/pages/farmerTab/farmerDashboard/modules/FarmerJournalList"
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 
 export const FarmerDashboard = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation()
   return (
     <IonPage>
       <IonHeader>

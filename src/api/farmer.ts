@@ -1,20 +1,7 @@
-import { CaseType, serialize } from "jsonapi-fractal";
-import { FarmerJournal } from "src/types/contentTypes";
-import { Node } from "src/types/highLevelTypes";
-import { jsonApi, jsonDeserialize } from ".";
-
-export const postFarmerJournal = async (journal: FarmerJournal) => {
-  return jsonApi.post(
-    `node/farmer_daily_journal`,
-    serialize<FarmerJournal>(journal, "node--farmer_daily_journal", {
-      changeCase: CaseType.snakeCase,
-    }),
-    {
-      headers: {
-        'Content-Type': 'application/vnd.api+json',
-      },
-    });
-}
+import { serialize, CaseType } from "jsonapi-fractal"
+import { jsonApi, jsonDeserialize } from "."
+import { FarmerJournal } from "src/types/contentTypes"
+import { Node } from "src/types/highLevelTypes"
 
 export const getFarmerJournalLogs = async (uid: string) => {
   const reponse = await jsonApi.get(
@@ -22,3 +9,19 @@ export const getFarmerJournalLogs = async (uid: string) => {
   )
   return jsonDeserialize<Node<FarmerJournal>[]>(reponse.data)
 }
+
+export const postFarmerJournal = async (journal: PostFarmerJournalInputs) => {
+  return jsonApi.post(
+    `node/farmer_daily_journal`,
+    serialize<PostFarmerJournalInputs>(journal, "node--farmer_daily_journal", {
+      changeCase: CaseType.snakeCase,
+    }),
+    {
+      headers: {
+        "Content-Type": "application/vnd.api+json",
+      },
+    }
+  )
+}
+
+export type PostFarmerJournalInputs = Node<FarmerJournal>

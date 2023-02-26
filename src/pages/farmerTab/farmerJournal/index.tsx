@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import {
   IonBackButton,
   IonButton,
@@ -12,20 +13,25 @@ import {
 } from "@ionic/react"
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form"
 import { FormStepA } from "@/pages/farmerTab/farmerJournal/formSteps/FormStepA"
-import { useRef } from "react"
+import { useMutation } from "@tanstack/react-query"
+import { postFarmerJournal } from "src/api/farmer"
+import type { PostFarmerJournalInputs } from "src/api/farmer"
 import { useTranslation } from "react-i18next"
 
 export const FarmerJournal = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const modal = useRef<HTMLIonModalElement>(null)
-  const methods = useForm<FarmerJournalFormInputs>()
-  const onSubmit: SubmitHandler<FarmerJournalFormInputs> = async (data) => {
-    // we pretend the mutation is successful
-    console.log(data)
-    await new Promise((resolve) => setTimeout(resolve, 500))
-    console.log("MUTATION SUCCESS")
-    modal.current?.dismiss()
+  const methods = useForm<PostFarmerJournalInputs>()
+  const { mutate, isSuccess: mutationSuccess } = useMutation(postFarmerJournal)
+
+  // todo: we should handle the form/mutation inside of the modal (it should be a module)
+  const onSubmit: SubmitHandler<PostFarmerJournalInputs> = async (data) => {
+    data.title = new Date().toLocaleString()
+    mutate(data)
   }
+  useEffect(() => {
+    if (mutationSuccess) modal.current?.dismiss()
+  }, [mutationSuccess])
 
   return (
     <IonPage>
@@ -65,19 +71,4 @@ export const FarmerJournal = () => {
       </IonContent>
     </IonPage>
   )
-}
-
-export type FarmerJournalFormInputs = {
-  initialStock: number
-  mortality: number
-  mortalityProlapse: number
-  largeEggsCount: number
-  mediumEggsCount: number
-  smallEggsCount: number
-  damagedEggsCount: number
-  layFrequency: number
-  layFrequencyIndustryStandard: number
-  totalFeedAmount: number
-  totalFeedAmountIndustryStandard: number
-  otherNotes: string
 }
