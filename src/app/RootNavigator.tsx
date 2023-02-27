@@ -26,6 +26,7 @@ import { useAuth } from "src/auth"
 import { paymentDashboard } from "@/pages/payments/paymentDashboard"
 import { RepayLoan } from "@/pages/payments/repayLoan"
 import { RecordSale } from "@/pages/payments/recordSale"
+// import { RecordSaleSteps } from "@/pages/payments/recordSale"
 
 
 export const RootNavigator = () => {
@@ -88,6 +89,12 @@ export const RootNavigator = () => {
           path="/record-sale"
           exact
           component={RecordSale}
+          appRole="FARMER"
+        />
+        <PrivateRoute
+          path="/record-sale-staps"
+          exact
+          component={RecordSaleSteps}
           appRole="FARMER"
         />
 
