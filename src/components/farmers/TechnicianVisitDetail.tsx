@@ -1,5 +1,6 @@
 import { IonCheckbox, IonInput, IonItem, IonLabel, IonTextarea } from "@ionic/react"
 import { DISEASE_MAP, getQualityName, TechnicianVisit, VACCINE_MAP } from "src/types/contentTypes"
+import { useTranslation } from "react-i18next"
 
 interface TextPreviewProps {
   label: string
@@ -22,6 +23,7 @@ export const TechnicianJournalDetail = ({ visit }: Props) => {
   const diseases = visit.fieldDiseaseNames.map(item => DISEASE_MAP.get(item)!).join('\n')
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const vaccines = visit.fieldVaccinations.map(item => VACCINE_MAP.get(item)!).join('\n')
+  const { t } = useTranslation()
   return <>
     <div>
       <TextPreview label="Light Sufficiency" value={getQualityName(visit.fieldLightSufficiency)} />
@@ -33,7 +35,7 @@ export const TechnicianJournalDetail = ({ visit }: Props) => {
     <div>
       <TextPreview label="Presence of Disease" value={visit.fieldDisease} />
       <IonItem fill="solid">
-        <IonLabel position="stacked">Names of diseaes</IonLabel>
+        <IonLabel position="stacked">{t("name_of_disease")}</IonLabel>
         <IonTextarea value={diseases} disabled></IonTextarea>
       </IonItem>
       <TextPreview label="Other Possible Diseases" value={visit.fieldOtherpossibledisease || ""} />

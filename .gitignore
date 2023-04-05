@@ -39,3 +39,4 @@ packages/react-devtools-timeline/dist
 
 .env
 dev-dist
+package-lock.json
