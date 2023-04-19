@@ -39,3 +39,6 @@ packages/react-devtools-timeline/dist
 
 .env
 dev-dist
+
+ovoflow-build.tar.gz
+DEPLOY.sh
