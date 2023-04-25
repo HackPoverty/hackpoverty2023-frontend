@@ -19,9 +19,7 @@ export const EntireForm = () => {
   const { register, watch, setValue, getValues } = useFormContext<FarmerJournalFormInputs>()
     
 
-  const useFormValues = () => {
-    const { getValues } = useFormContext();
-  
+  const useFormValues = () => {  
     return {
       ...useWatch(), // subscribe to form value updates
       ...getValues(), // always merge with latest form values
@@ -29,6 +27,8 @@ export const EntireForm = () => {
   }
 
   const values = useFormValues();
+  console.log(values);
+
   
   // Callback version of watch.  It's your responsibility to unsubscribe when done.
   React.useEffect(() => {      

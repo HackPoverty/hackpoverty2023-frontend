@@ -10,6 +10,7 @@ import { useFormContext } from "react-hook-form"
 import { FarmerJournalFormInputs } from ".."
 import { FormStepD } from "./FormStepD"
 import { t } from "i18next"
+import uncamelize from "uncamelize"
 
 export const FormStepE = () => {
   const { watch } = useFormContext<FarmerJournalFormInputs>()
@@ -21,7 +22,7 @@ export const FormStepE = () => {
         <IonListHeader>{t("confirm_your_submission")}</IonListHeader>
         {Object.keys(watchAllFields).map((key) => (
           <IonItem key={key}>
-            {key}: {watchAllFields[key as keyof typeof watchAllFields]}
+            <strong style={{textTransform: "capitalize"}}>{uncamelize(key)}</strong>: {watchAllFields[key as keyof typeof watchAllFields]}
           </IonItem>
         ))}
       </IonList>
