@@ -15,13 +15,15 @@ export const FormStepE = () => {
   const { watch } = useFormContext<FarmerJournalFormInputs>()
   const watchAllFields = watch()
 
+  
+
   return (
     <IonContent className="page">
       <IonList>
         <IonListHeader>{t("confirm_your_submission")}</IonListHeader>
         {Object.keys(watchAllFields).map((key) => (
           <IonItem key={key}>
-            {key}: {watchAllFields[key as keyof typeof watchAllFields]}
+            <strong style={{textTransform: "capitalize"}}>{uncamelize(key)}</strong>: {watchAllFields[key as keyof typeof watchAllFields]}
           </IonItem>
         ))}
       </IonList>
@@ -31,4 +33,8 @@ export const FormStepE = () => {
       <IonButton type="submit">{t("submit")}</IonButton>
     </IonContent>
   )
+}
+
+function uncamelize(str: string): string {
+  return str.replace(/([A-Z])/g, ' $1');
 }
