@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query"
 import { t } from "i18next"
 import { getFarmerJournalLogs } from "src/api/farmer"
 import { useAuth } from "src/auth"
-import { FarmerJournal } from "src/types/contentTypes"
 
 export const FarmerJournalList = () => {
   const auth = useAuth()

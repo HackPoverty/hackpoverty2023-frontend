@@ -20,7 +20,7 @@ tar -zvcf "../$TAR_FILE_NAME" ./*
 cd ..
 
 # Copy the files over to server
-pscp -P $SSH_PORT -i $PRIVATE_FILE $TAR_FILE_NAME "$USER_AND_HOST:$DIRECTORY_TO_UNPACK" -agent
+pscp -P $SSH_PORT -i $PRIVATE_FILE $TAR_FILE_NAME "$USER_AND_HOST:$DIRECTORY_TO_UNPACK"
 
 plink -P 22 -i $PRIVATE_FILE $USER_AND_HOST \
-  "cd '$DIRECTORY_TO_UNPACK'; tar -zxvf $TAR_FILE_NAME" 
+  "cd '$DIRECTORY_TO_UNPACK'; tar -zxvf $TAR_FILE_NAME; rm -f $TAR_FILE_NAME" 

@@ -24,10 +24,10 @@ export const FormStepE = () => {
     <IonContent className="page">
       <IonList>
         <IonListHeader>{t("confirm_your_submission")}</IonListHeader>
-        <IonItem key={`dummy-${dummycounter++}`}>&nbsp;</IonItem>
         {Object.keys(computedState).map((key) => {
           const keyConvert = key as keyof typeof computedState;
           let value;
+          console.log(key);
 
           const linebreakKeys : (keyof typeof computedState)[] = [
             'closingStock', 
@@ -55,10 +55,9 @@ export const FormStepE = () => {
            
           return (
             <>
-              <IonItem key={key}>
+              <IonItem key={key} style={{paddingBottom: addLineBreak ? '2em' : null}}>
                 <strong style={{textTransform: "capitalize"}}>{uncamelize(key)}</strong>: {value}
               </IonItem>
-              {addLineBreak && (<IonItem key={`dummy-${dummycounter++}`}>&nbsp;</IonItem>)}
             </>
           )
         })}

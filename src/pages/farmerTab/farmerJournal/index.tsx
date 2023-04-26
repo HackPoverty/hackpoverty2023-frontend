@@ -12,15 +12,13 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react"
-import { useForm, SubmitHandler, FormProvider, UseFormSetValue } from "react-hook-form"
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form"
 import { FormStepA } from "@/pages/farmerTab/farmerJournal/formSteps/FormStepA"
 import { useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { postFarmerJournal } from "src/api/farmer"
 import { FarmerJournal as FarmJounalType } from "src/types/contentTypes"
-import { AuthUser, useAuth } from "src/auth"
 import { useMutation } from "@tanstack/react-query"
-import { Loading } from "@ionic/core/dist/types/components/loading/loading"
 
 export const FarmerJournal = () => {
   const { t } = useTranslation();
@@ -30,7 +28,7 @@ export const FarmerJournal = () => {
   });
   
   const { mutate, isLoading, isSuccess, isError } = useMutation(postFarmerJournal, {
-    onSettled(data, error, variables, context) {
+    onSettled(data, error) {
       modal.current?.dismiss()
 
       if (error) {
