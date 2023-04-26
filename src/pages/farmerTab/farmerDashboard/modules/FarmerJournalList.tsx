@@ -1,7 +1,9 @@
 import { IonList, IonItem, IonText } from "@ionic/react"
 import { useQuery } from "@tanstack/react-query"
+import { t } from "i18next"
 import { getFarmerJournalLogs } from "src/api/farmer"
 import { useAuth } from "src/auth"
+import { FarmerJournal } from "src/types/contentTypes"
 
 export const FarmerJournalList = () => {
   const auth = useAuth()
@@ -21,12 +23,15 @@ export const FarmerJournalList = () => {
 
   return (
     // todo: make this pretty
-    <IonList>
-      {data?.map((journalEntry) => (
-        <IonItem key={journalEntry.id} className="ion-margin-bottom">
-          <IonText>{JSON.stringify(journalEntry)}</IonText>
-        </IonItem>
-      ))}
+    <IonList style={{marginTop: '2em', padding: '1em 0'}}>
+      {data?.map((journalEntry) => {
+        const createdDate = new Date(journalEntry.created);
+        return (
+          <IonItem key={journalEntry.id} className="ion-margin-bottom">
+            <IonText>{t('journal_of')} <strong>{createdDate.toLocaleDateString()}</strong> {createdDate.toLocaleTimeString()}</IonText>
+          </IonItem>
+        )
+      })}
     </IonList>
   )
 }

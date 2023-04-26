@@ -15,7 +15,7 @@ import { FarmerJournalList } from "@/pages/farmerTab/farmerDashboard/modules/Far
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export const FarmerDashboard = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <IonPage>
       <IonHeader>
