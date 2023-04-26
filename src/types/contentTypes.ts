@@ -154,3 +154,14 @@ export type FarmerJournal = {
   fieldTotalMortality: number | null,
   fieldWeightOfBird: number | null
 }
+
+export type FarmerJournalNode = {
+  
+  title: string,
+  
+  // uid is already store in bearer token   
+  // uid: {
+  //   id: string,
+  // },
+
+} & FarmerJournal;

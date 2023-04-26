@@ -53,6 +53,13 @@
   "notes_ and_concerns_are_admin_or_farmers": "Notes and concerns are admin or farmers",
   "note_comments_or_concerns": "note, comments or concerns",
   "name_of_disease": "Name of Disease",
-  "type_of_vaccine_admisterred": "Type of vaccine administered"
+  "type_of_vaccine_admisterred": "Type of vaccine administered",
 
+  "saving_journal": "Saving Journal...",
+  "saved_error_message_header": "Error!",
+  "saved_error_message": "We could not save your journal submission",
+  "saved_success_message_header": "Success!",
+  "saved_success_message": "We have successfully saved your journal submission",
+
+  "":""
 }

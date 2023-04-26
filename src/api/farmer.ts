@@ -1,19 +1,35 @@
 import { CaseType, serialize } from "jsonapi-fractal";
-import { FarmerJournal } from "src/types/contentTypes";
+import { FarmerJournal, FarmerJournalNode } from "src/types/contentTypes";
 import { Node } from "src/types/highLevelTypes";
 import { jsonApi, jsonDeserialize } from ".";
 
-export const postFarmerJournal = async (journal: FarmerJournal) => {
-  return jsonApi.post(
-    `node/farmer_daily_journal`,
-    serialize<FarmerJournal>(journal, "node--farmer_daily_journal", {
-      changeCase: CaseType.snakeCase,
-    }),
-    {
-      headers: {
-        'Content-Type': 'application/vnd.api+json',
-      },
-    });
+
+type PostFarmJournal = {
+  journal: FarmerJournal,
+}
+
+export const postFarmerJournal = async ({journal} : PostFarmJournal) => {
+  const now = new Date();
+  const dateString = now.toLocaleDateString();
+
+  const postdata : FarmerJournalNode = {
+    ...journal,
+    // TODO: Generate descriptive title
+    title: `${dateString} Journal`,
+  }
+
+  const serialized = serialize<typeof postdata>(postdata, "node--technician_visit", {
+    changeCase: CaseType.snakeCase,
+    relationships: {
+      uid: "user--user",
+    },
+  })
+
+  return jsonApi.post(`node/farmer_daily_journal`, serialized, {
+    headers: {
+      'Content-Type': 'application/vnd.api+json',
+    },
+  });
 }
 
 export const getFarmerJournalLogs = async (uid: string) => {

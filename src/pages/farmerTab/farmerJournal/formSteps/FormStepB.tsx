@@ -40,13 +40,14 @@ export const FormStepB = () => {
         </IonItem>
         <IonItem>
           <IonLabel position="stacked">{t('lay_frequency')}</IonLabel>
-          <IonInput type="number" {...register("layFrequency")} />
+          <IonInput type="number" {...register("layFrequency")} step="0.01"/>
         </IonItem>
         <IonItem>
           <IonLabel position="stacked">{t('industry_standard')}</IonLabel>
           <IonInput
             type="number"
             {...register("layFrequencyIndustryStandard")}
+            step="0.01"
           />
         </IonItem>
       </IonList>

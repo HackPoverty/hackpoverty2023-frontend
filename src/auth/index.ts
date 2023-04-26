@@ -6,14 +6,16 @@ export const TOKEN_STORAGE_KEY = "ovoflow_token" as const
 export const Roles = ["FARMER", "TECHNICIAN"] as const
 export type Role = (typeof Roles)[number]
 
-type User = {
-  uid: string
+export type AuthUserUid = string;
+
+export type AuthUser = {
+  uid: AuthUserUid
   role: Role
 }
 
 type Store = {
   iat?: number
-  user?: User
+  user?: AuthUser
   login: (data: LoginData) => Promise<Role>
   logout: () => void
 }
@@ -28,7 +30,7 @@ const JWTUserRoles = ["authenticated", "ovo_farmer", "ovo_technician"] as const
 type JWTPayLoad = {
   iat: number
   drupal: {
-    uid: string
+    uid: AuthUserUid
     role: (typeof JWTUserRoles)[number][]
   }
 }
@@ -40,7 +42,7 @@ const decodeToken = (token: string) => {
     user: {
       uid: drupal.uid,
       role: drupal.role.includes("ovo_technician") ? "TECHNICIAN" : "FARMER",
-    } as User,
+    } as AuthUser,
   }
 }
 

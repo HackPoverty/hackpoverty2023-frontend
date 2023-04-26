@@ -55,5 +55,13 @@
   "notes_ and_concerns_are_admin_or_farmers": "notas e preocupações são admin ou Productor",
   "note_comments_or_concerns": "observe comentários ou preocupações",
   "name_of_disease":"Nome da doença",
-  "type_of_vaccine_admisterred": "Tipo de vacina administrada"
+  "type_of_vaccine_admisterred": "Tipo de vacina administrada",
+
+  "saving_journal": "TODO: Saving Journal...",
+  "saved_error_message_header": "TODO: Error!",
+  "saved_error_message": "TODO: We could not save your journal submission",
+  "saved_success_message_header": "TODO: Success!",
+  "saved_success_message": "TODO: We have successfully saved your journal submission",
+
+  "":""
 }

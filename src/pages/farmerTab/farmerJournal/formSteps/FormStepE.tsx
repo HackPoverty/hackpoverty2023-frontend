@@ -18,11 +18,13 @@ export const FormStepE = () => {
   // FIXME: Hack to display computed state
   const computedState = setComputedState(watchAllFields);
 
+  let dummycounter = 0;
+
   return (
     <IonContent className="page">
       <IonList>
         <IonListHeader>{t("confirm_your_submission")}</IonListHeader>
-        <IonItem>&nbsp;</IonItem>
+        <IonItem key={`dummy-${dummycounter++}`}>&nbsp;</IonItem>
         {Object.keys(computedState).map((key) => {
           const keyConvert = key as keyof typeof computedState;
           let value;
@@ -56,7 +58,7 @@ export const FormStepE = () => {
               <IonItem key={key}>
                 <strong style={{textTransform: "capitalize"}}>{uncamelize(key)}</strong>: {value}
               </IonItem>
-              {addLineBreak && (<IonItem>&nbsp;</IonItem>)}
+              {addLineBreak && (<IonItem key={`dummy-${dummycounter++}`}>&nbsp;</IonItem>)}
             </>
           )
         })}
