@@ -20,7 +20,7 @@ export const FormStepA = () => {
   return (
     <IonContent className="page">
       <IonList>
-        <IonListHeader>{t('chickens')}</IonListHeader>
+        <IonListHeader>{t('chickens_header')}</IonListHeader>
         <IonItem>
           <IonLabel position="stacked">{t('initial_stock')}</IonLabel>
           <IonInput type="number" {...register("initialStock")} />

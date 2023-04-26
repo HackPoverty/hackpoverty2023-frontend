@@ -7,25 +7,59 @@ import {
   IonContent,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
-import { FarmerJournalFormInputs } from ".."
+import { FarmerJournalFormInputs, setComputedState } from ".."
 import { FormStepD } from "./FormStepD"
 import { t } from "i18next"
 
 export const FormStepE = () => {
   const { watch } = useFormContext<FarmerJournalFormInputs>()
-  const watchAllFields = watch()
+  const watchAllFields = watch();
 
-  
+  // FIXME: Hack to display computed state
+  const computedState = setComputedState(watchAllFields);
 
   return (
     <IonContent className="page">
       <IonList>
         <IonListHeader>{t("confirm_your_submission")}</IonListHeader>
-        {Object.keys(watchAllFields).map((key) => (
-          <IonItem key={key}>
-            <strong style={{textTransform: "capitalize"}}>{uncamelize(key)}</strong>: {watchAllFields[key as keyof typeof watchAllFields]}
-          </IonItem>
-        ))}
+        <IonItem>&nbsp;</IonItem>
+        {Object.keys(computedState).map((key) => {
+          const keyConvert = key as keyof typeof computedState;
+          let value;
+
+          const linebreakKeys : (keyof typeof computedState)[] = [
+            'closingStock', 
+            'totalEggsProduced',
+            'layFrequencyIndustryStandard',
+            'hoursOfLight',
+            'otherNotes',
+          ];
+          const addLineBreak = linebreakKeys.indexOf(keyConvert) !== -1;
+
+          switch (keyConvert) {
+            case 'mortalityPercent':
+            case 'damagedEggsPercentage':
+              value = computedState[keyConvert].toFixed(2) + "%";
+              break;
+
+            case 'feedGramsPerBird':
+              value = computedState[keyConvert].toFixed(2) + " g";
+              break;
+
+            default:
+              value = computedState[keyConvert];
+              break;
+          }
+           
+          return (
+            <>
+              <IonItem key={key}>
+                <strong style={{textTransform: "capitalize"}}>{uncamelize(key)}</strong>: {value}
+              </IonItem>
+              {addLineBreak && (<IonItem>&nbsp;</IonItem>)}
+            </>
+          )
+        })}
       </IonList>
       <IonNavLink routerDirection="back" component={() => <FormStepD />}>
         <IonButton>{t("back").toUpperCase()}</IonButton>

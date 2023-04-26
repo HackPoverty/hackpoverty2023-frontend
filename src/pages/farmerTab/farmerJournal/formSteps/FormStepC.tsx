@@ -6,6 +6,7 @@ import {
   IonLabel,
   IonList,
   IonNavLink,
+  IonListHeader,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
 import { useTranslation } from "react-i18next"
@@ -20,6 +21,7 @@ export const FormStepC = () => {
   return (
     <IonContent className="page">
       <IonList>
+        <IonListHeader>{t('feed_and_light')}</IonListHeader>
         <IonItem>
           <IonLabel position="stacked">{t('total_feed_given')}</IonLabel>
           <IonInput type="number" {...register("totalFeedAmount")} />
@@ -30,6 +32,10 @@ export const FormStepC = () => {
             type="number"
             {...register("totalFeedAmountIndustryStandard")}
           />
+        </IonItem>
+        <IonItem>
+          <IonLabel position="stacked">{t('hours_of_light')}</IonLabel>
+          <IonInput type="number" {...register("hoursOfLight")} />
         </IonItem>
       </IonList>
       <IonNavLink routerDirection="back" component={() => <FormStepB />}>

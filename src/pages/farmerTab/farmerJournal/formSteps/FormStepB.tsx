@@ -6,6 +6,7 @@ import {
   IonLabel,
   IonList,
   IonNavLink,
+  IonListHeader,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
 import { useTranslation } from "react-i18next"
@@ -20,6 +21,7 @@ export const FormStepB = () => {
   return (
     <IonContent className="page">
       <IonList>
+        <IonListHeader>{t('eggs_info')}</IonListHeader>
         <IonItem>
           <IonLabel position="stacked">{t('large_eggs_produced')}</IonLabel>
           <IonInput type="number" {...register("largeEggsCount")} />

@@ -28,12 +28,15 @@
   "journal_of": "Actividades diárias de",
   "cancel": "Cancelar",
   "record_data": "Inserir dados",
-  "chickens": "Galinhas",
+  
+  "chickens_header": "Galinhas (1/4)",
   "next": "Próximo", 
   "initial_stock": "Estoque Inicial",
   "mortality": "Mortalidade",
   "number_of_chicken_deaths": "Número de galinhas mortas",
   "mortality_prolapse": "Mortalidade por Prolapso",
+
+  "eggs_info": "TODO: Eggs Information (2/4)",
   "large_eggs_produced": "Ovos Grandes Produzidos",  
   "medium_eggs_produced": "Ovos Médios Produzidos",
   "small_eggs_produced": "Ovos Pequenos Produzidos",
@@ -41,13 +44,16 @@
   "lay_frequency": "Frequência de ovos Produzidos",
   "industry_standard": "Melhores Prácticas",
   "back": "Voltar",
+
+  "feed_and_light": "TODO: Feed & Light (3/4)",
   "total_feed_given": "Total de Alimento Dado",
+  "hours_of_light": "TODO: Hours of Light",
   "record_is_complete_today": " Registos completos",
   "contact_admin_or_farmer": "Entre em contacto com Administrador ou Productor",
+
+  "notes_header": "TODO: Notes (4/4)",
   "notes_ and_concerns_are_admin_or_farmers": "notas e preocupações são admin ou Productor",
   "note_comments_or_concerns": "observe comentários ou preocupações",
   "name_of_disease":"Nome da doença",
   "type_of_vaccine_admisterred": "Tipo de vacina administrada"
-
-
 }

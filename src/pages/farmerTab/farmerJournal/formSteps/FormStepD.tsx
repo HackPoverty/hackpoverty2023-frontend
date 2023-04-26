@@ -6,6 +6,7 @@ import {
   IonLabel,
   IonList,
   IonNavLink,
+  IonListHeader,
 } from "@ionic/react"
 import { useFormContext } from "react-hook-form"
 import { FarmerJournalFormInputs } from ".."
@@ -19,6 +20,7 @@ export const FormStepD = () => {
   return (
     <IonContent className="page">
       <IonList>
+        <IonListHeader>{t('notes_header')}</IonListHeader>
         <IonItem>
           <IonLabel position="stacked">
             {t("notes_and_concerns_for_admins_or_technicians")}

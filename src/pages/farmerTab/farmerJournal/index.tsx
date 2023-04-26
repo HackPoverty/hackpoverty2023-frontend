@@ -10,7 +10,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react"
-import { useForm, SubmitHandler, FormProvider } from "react-hook-form"
+import { useForm, SubmitHandler, FormProvider, UseFormSetValue } from "react-hook-form"
 import { FormStepA } from "@/pages/farmerTab/farmerJournal/formSteps/FormStepA"
 import { useRef } from "react"
 import { useTranslation } from "react-i18next"
@@ -23,36 +23,41 @@ export const FarmerJournal = () => {
   const modal = useRef<HTMLIonModalElement>(null)
   const methods = useForm<FarmerJournalFormInputs>({
     defaultValues: {
-      initialStock: 0,
-      mortality: 0,
-      mortalityProlapse: 0,
+      initialStock: '0',
+      mortality: '0',
+      mortalityProlapse: '0',
       mortalityTotal: 0,
       mortalityPercent: 0.0,
       closingStock: 0,
 
-      largeEggsCount: 0,
-      mediumEggsCount: 0,
-      smallEggsCount: 0,
+      largeEggsCount: '0',
+      mediumEggsCount: '0',
+      smallEggsCount: '0',
       totalEggsProduced: 0,
 
-      damagedEggsCount: 0,
+      damagedEggsCount: '0',
       damagedEggsPercentage: 0.0,
 
-      layFrequency: 0.0,
-      layFrequencyIndustryStandard: 0.0,
-      totalFeedAmount: 0,
+      layFrequency: '0.0',
+      layFrequencyIndustryStandard: '0.0',
+      totalFeedAmount: '0',
       feedGramsPerBird: 0.0,
-      totalFeedAmountIndustryStandard: 0,
-      hoursOfLight: 0.0,
+      totalFeedAmountIndustryStandard: '0',
+      hoursOfLight: '0.0',
       otherNotes: "",
     },
   });
 
   const onSubmit: SubmitHandler<FarmerJournalFormInputs> = async (data) => {
 
-    const farmerJournal = convert(data);
+
+    const computedData = setComputedState(data);
+
+    const farmerJournal = convert(computedData);
+
     // we pretend the mutation is successful
     console.log(farmerJournal)
+
     
     const response = await postFarmerJournal(farmerJournal);
 
@@ -62,6 +67,7 @@ export const FarmerJournal = () => {
 
   const now = new Date();
   const dateString = now.toLocaleDateString();
+  
 
   return (
     <IonPage>
@@ -104,58 +110,91 @@ export const FarmerJournal = () => {
   )
 }
 
+ // FIXME: These strings should be numbers
 export type FarmerJournalFormInputs = {
-  initialStock: number
-  mortality: number
-  mortalityProlapse: number
-  mortalityTotal: number
-  mortalityPercent: number
-  closingStock: number
+  initialStock: string
+  mortality: string
+  mortalityProlapse: string
+  mortalityTotal: number | -1
+  mortalityPercent: number | -0.1
+  closingStock: number | -1
 
-  largeEggsCount: number
-  mediumEggsCount: number
-  smallEggsCount: number
-  totalEggsProduced: number
+  largeEggsCount: string
+  mediumEggsCount: string
+  smallEggsCount: string
+  totalEggsProduced: number | -1
 
-  damagedEggsCount: number
-  damagedEggsPercentage: number
+  damagedEggsCount: string
+  damagedEggsPercentage: number | -0.1
+  layFrequency: string
+  layFrequencyIndustryStandard: string
 
-  layFrequency: number
-  layFrequencyIndustryStandard: number
-  totalFeedAmount: number
-  feedGramsPerBird: number
-  totalFeedAmountIndustryStandard: number
-  hoursOfLight: number
-  otherNotes: string
+  totalFeedAmount: string
+  feedGramsPerBird: number | -0.1
+  totalFeedAmountIndustryStandard: string
+  hoursOfLight: string
+
+  otherNotes: string | ""
 };
 
 function convert(inputs: FarmerJournalFormInputs): FarmJounalType {
   const fj : FarmJounalType = {
-    fieldInitialStock: inputs.initialStock,
-    fieldMortality: inputs.mortality,
-    fieldMortalityProlapse_: inputs.mortalityProlapse,
+    fieldInitialStock: parseInt(inputs.initialStock),
+    fieldMortality: parseInt(inputs.mortality),
+    fieldMortalityProlapse_: parseInt(inputs.mortalityProlapse),
     fieldTotalMortality: inputs.mortalityTotal,
     fieldMortalityPercentage_: inputs.mortalityPercent,
     fieldClosingStock: inputs.closingStock,
 
-    fieldLayFrequency: inputs.layFrequency,
-    fieldLayFrequencyIndustrySta: inputs.layFrequencyIndustryStandard,
+    fieldLayFrequency: parseFloat(inputs.layFrequency),
+    fieldLayFrequencyIndustrySta: parseFloat(inputs.layFrequencyIndustryStandard),
 
-    fieldDamagedEggs: inputs.damagedEggsCount,
+    fieldDamagedEggs: parseInt(inputs.damagedEggsCount),
     fieldDamagedEggsPercentage_: inputs.damagedEggsPercentage,
     fieldEggsProduced: inputs.totalEggsProduced,
-    fieldLargeEggs: inputs.largeEggsCount,
-    fieldMediumEggs: inputs.mediumEggsCount,
-    fieldSmallEggs: inputs.smallEggsCount,
+    fieldLargeEggs: parseInt(inputs.largeEggsCount),
+    fieldMediumEggs: parseInt(inputs.mediumEggsCount),
+    fieldSmallEggs: parseInt(inputs.smallEggsCount),
 
-    fieldGivenFeed: inputs.totalFeedAmount,
+    fieldGivenFeed: parseInt(inputs.totalFeedAmount),
     fieldGramsPerBird: inputs.feedGramsPerBird,
-    fieldGramPerBirdIndustrySta: inputs.totalFeedAmountIndustryStandard,
+    fieldGramPerBirdIndustrySta: parseInt(inputs.totalFeedAmountIndustryStandard),
 
-    fieldHoursOfLight: inputs.hoursOfLight,
+    fieldHoursOfLight: parseInt(inputs.hoursOfLight),
 
     fieldWeightOfBird: 0.0,
   };
 
   return fj;
 };
+
+export function setComputedState(values: FarmerJournalFormInputs ) : FarmerJournalFormInputs {
+
+
+  console.log("before computed", values);
+
+  if (values.mortality != null && values.mortalityProlapse != null) {
+    values.mortalityTotal = parseInt(values.mortality) + parseInt(values.mortalityProlapse);
+  }
+
+  if (values.initialStock != null && values.mortalityTotal != null) {
+    values.closingStock = parseInt(values.initialStock) - values.mortalityTotal;
+    values.mortalityPercent = (100.0 * values.mortalityTotal/parseInt(values.initialStock));
+  }
+  
+  if (values.totalFeedAmount != null && values.closingStock != null) {
+    values.feedGramsPerBird = parseInt(values.totalFeedAmount) / values.closingStock;
+  }
+
+  if (values.smallEggsCount != null && values.mediumEggsCount != null && values.largeEggsCount != null) {
+    values.totalEggsProduced = parseInt(values.smallEggsCount) + parseInt(values.mediumEggsCount) + parseInt(values.largeEggsCount);
+  }
+
+  if (values.damagedEggsCount != null && values.totalEggsProduced != null) {
+    values.damagedEggsPercentage = parseInt(values.damagedEggsCount) / values.totalEggsProduced;
+  }
+
+  console.log("after computed", values);
+
+  return values;
+}
